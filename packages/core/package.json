@@ -1,6 +1,6 @@
 {
   "name": "@iuv/core",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Core module of IUV",
   "main": "./build/index.js",
   "scripts": {
