@@ -7,7 +7,7 @@ import { isDevDquipment } from '../utils/platform';
  * 静态文件打包
  */
 export const clientCompiler = (webpackConfig: webpack.Configuration, title: string): Promise<webpack.Stats> => {
-    // 过程动画
+    // 开始编译
     const buildSpin = spin(`编译「${title}」js文件中...`);
     buildSpin.start();
 
