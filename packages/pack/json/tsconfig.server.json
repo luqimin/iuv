@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "lib": [
+      "dom",
+      "esnext"
+    ],
+    "allowJs": true,
+    "jsx": "react",
+    "charset": "utf8",
+    "noImplicitAny": false,
+    "downlevelIteration": true,
+    "declaration": false,
+    "outDir": "./build",
+    "rootDir": "./",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "importHelpers": true,
+    "removeComments": false,
+    "strict": true
+  },
+  "include": [
+    "index.d.ts",
+    "typings/*.d.ts",
+    "server/index.d.ts",
+    "server/**/*.ts",
+    "server/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

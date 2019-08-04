@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "lib": [
+      "dom",
+      "esnext"
+    ],
+    "allowJs": true,
+    "jsx": "react",
+    "charset": "utf8",
+    "noImplicitAny": false,
+    "downlevelIteration": true,
+    "declaration": false,
+    "sourceMap": true,
+    "outDir": "./build",
+    "rootDir": "./",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "importHelpers": true,
+    "removeComments": false,
+    "strict": true
+  },
+  "include": [
+    "index.d.ts",
+    "typings/*.d.ts",
+    "server/**/*.ts",
+    "server/**/*.tsx",
+    "client/**/*.ts",
+    "client/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
