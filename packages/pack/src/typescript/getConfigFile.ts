@@ -11,8 +11,8 @@ export default (context: string, filename: string = 'tsconfig.json'): string => 
         configPath = _projectConfigPath;
     } else {
         configPath =
-            ts.findConfigFile(path.resolve(__dirname, '../json/'), ts.sys.fileExists, filename) ||
-            ts.findConfigFile(path.resolve(__dirname, '../json/'), ts.sys.fileExists, 'tsconfig.default.json')!;
+            ts.findConfigFile(path.resolve(__dirname, '../../json/'), ts.sys.fileExists, filename) ||
+            ts.findConfigFile(path.resolve(__dirname, '../../json/'), ts.sys.fileExists, 'tsconfig.default.json')!;
     }
 
     return configPath;

@@ -2,7 +2,7 @@
   "name": "@iuv/pack",
   "version": "1.0.0",
   "description": "pack for iuv",
-  "main": "index.js",
+  "main": "./build/index.js",
   "scripts": {
     "start": "tsc --watch --pretty",
     "lint": "tslint -p ./",
