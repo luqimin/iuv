@@ -1,0 +1,53 @@
+{
+  "name": "@iuv/cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./build/bin/i.js",
+  "bin": {
+    "i": "./build/bin/i.js"
+  },
+  "scripts": {
+    "start": "tsc --watch --pretty",
+    "lint": "tslint -p ./",
+    "clean": "rimraf build types",
+    "prebuild": "npm run lint && npm run clean",
+    "build": "tsc",
+    "test": "mocha"
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "build",
+    "types",
+    "README.md"
+  ],
+  "types": "./types/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "cli",
+    "inv"
+  ],
+  "author": "luqimin",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/clui": "^0.3.0",
+    "@types/command-line-args": "^5.0.0",
+    "@types/cross-spawn": "^6.0.0",
+    "@types/inquirer": "^6.0.2",
+    "@types/lodash": "^4.14.130",
+    "@types/node": "^12.0.2",
+    "rimraf": "^2.6.3",
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.5"
+  },
+  "dependencies": {
+    "@iuv/core": "^1.0.0",
+    "chalk": "^2.4.2",
+    "clui": "^0.3.6",
+    "command-line-args": "^5.1.1",
+    "commander": "^2.20.0",
+    "cross-spawn": "^6.0.5"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "name": "@iuv/core",
+  "version": "1.0.0",
+  "description": "Core module of IUV",
+  "main": "./build/index.js",
+  "scripts": {
+    "start": "tsc --watch --pretty",
+    "lint": "tslint -p ./",
+    "clean": "rimraf build types",
+    "prebuild": "npm run lint && npm run clean",
+    "build": "tsc",
+    "test": "mocha"
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "build",
+    "types",
+    "README.md"
+  ],
+  "types": "./types/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">= 8.0.0"
+  },
+  "keywords": [
+    "iuv",
+    "cli"
+  ],
+  "author": "luqimin",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^12.0.2",
+    "mocha": "^6.1.4",
+    "rimraf": "^2.6.3",
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.5"
+  },
+  "dependencies": {
+    "@types/command-line-args": "^5.0.0",
+    "chalk": "^2.4.2",
+    "moment": "^2.24.0"
+  }
+}

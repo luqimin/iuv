@@ -1,0 +1,51 @@
+{
+  "name": "@iuv/ssr-kit",
+  "version": "1.0.0",
+  "description": "Tools set for iuv ssr projects",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc --watch --pretty",
+    "lint": "tslint -p ./",
+    "clean": "rimraf build types",
+    "prebuild": "npm run lint && npm run clean",
+    "build": "tsc",
+    "test": "mocha"
+  },
+  "keywords": [
+    "ssr",
+    "iuv"
+  ],
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "build",
+    "types",
+    "README.md"
+  ],
+  "types": "./types/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">= 8.0.0"
+  },
+  "author": "luqimin",
+  "license": "ISC",
+  "dependencies": {
+    "@iuv/core": "^1.0.0",
+    "@iuv/pack": "^1.0.0",
+    "cross-spawn": "^6.0.5",
+    "extend": "^3.0.2",
+    "lodash": "^4.17.11",
+    "nodemon": "^1.19.0"
+  },
+  "devDependencies": {
+    "@types/cross-spawn": "^6.0.0",
+    "@types/extend": "^3.0.1",
+    "@types/lodash": "^4.14.132",
+    "@types/webpack": "^4.4.32",
+    "rimraf": "^2.6.3",
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.5"
+  }
+}
