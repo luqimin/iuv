@@ -1,12 +1,12 @@
 /**
  * 获取webpack配置
  */
-import * as path from 'path';
 import * as webpack from 'webpack';
 
 import Entry from './entry';
 import Output from './output';
 import Resolve from './resolve';
+import ResolveLoader from './resolveLoader';
 import Module from './module';
 import Plugins from './plugins';
 import Optimization from './optimization';
@@ -44,6 +44,7 @@ export const getWebpackConfig = (
         output: smartEnv(Output, options, config),
         optimization: smartEnv(Optimization, config),
         resolve: smartEnv(Resolve, options),
+        resolveLoader: smartEnv(ResolveLoader),
         module: smartEnv(Module, options, config),
         plugins: smartEnv(Plugins, options, config),
         devtool: Env.isProductuction ? false : 'cheap-module-eval-source-map',

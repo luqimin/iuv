@@ -8,6 +8,7 @@ import * as nodeExternals from 'webpack-node-externals';
 import Entry from './entry';
 import Module from './ssrModule';
 import Resolve from './resolve';
+import ResolveLoader from './resolveLoader';
 
 import { Env, initEnv, smartEnv } from './env';
 import { IMEPackConfig, IMEPackOptions } from '../const/config';
@@ -35,6 +36,7 @@ export default (options: IMEPackOptions, config?: IMEPackConfig): webpack.Config
         },
         module: smartEnv(Module, options, config || {}),
         resolve: smartEnv(Resolve, options),
+        resolveLoader: smartEnv(ResolveLoader),
         devtool: false,
         externals: [nodeExternals()],
     };
