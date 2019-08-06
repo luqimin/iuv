@@ -1,6 +1,6 @@
 {
   "name": "@iuv/init",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Init an IUV app",
   "main": "./build/index.js",
   "scripts": {
