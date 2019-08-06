@@ -46,9 +46,9 @@ class Init extends BaseClass<InitParams> {
                         name: 'git',
                         type: 'input',
                         message: '模板 git http 地址',
-                        default: 'https://demo.com/demo#master',
+                        default: 'github:luqimin/iuv-ssr-template#master',
                         validate: (input) => {
-                            const reg = /^https?:\/\/.+$/gi;
+                            const reg = /^github?:.+\/.+#.+/gi;
                             return reg.test(input);
                         },
                     },
