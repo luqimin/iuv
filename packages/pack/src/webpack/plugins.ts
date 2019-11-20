@@ -16,7 +16,7 @@ export default (options: IMEPackOptions, config: IMEPackConfig) => {
         }),
     ];
 
-    if (config.ssr.enable === true) {
+    if (config.ssr && config.ssr.enable === true) {
         // 添加Loadable Components插件
         try {
             const LoadablePlugin = require(resolve('node_modules', '@loadable', 'webpack-plugin'));

@@ -75,7 +75,7 @@ export interface IMEPackConfig {
     /**
      * ssr开关
      */
-    ssr: SSR;
+    ssr?: SSR;
 }
 
 interface SSR {
