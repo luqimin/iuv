@@ -71,6 +71,16 @@ export interface IMEPackConfig {
      * less modifyVars配置
      */
     lessModifyVars?: { [key: string]: string };
+
+    /**
+     * ssr开关
+     */
+    ssr: SSR;
+}
+
+interface SSR {
+    enable: boolean;
+    type?: 'react' | 'vue';
 }
 
 /**

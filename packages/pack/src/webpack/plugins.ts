@@ -16,13 +16,15 @@ export default (options: IMEPackOptions, config: IMEPackConfig) => {
         }),
     ];
 
-    // 添加Loadable Components插件
-    try {
-        const LoadablePlugin = require(resolve('node_modules', '@loadable', 'webpack-plugin'));
-        common.push(new LoadablePlugin({
-            filename: '../../server/ssr/loadable-stats.json',
-        }) as webpack.Plugin);
-    } catch (error) {}
+    if (config.ssr.enable === true) {
+        // 添加Loadable Components插件
+        try {
+            const LoadablePlugin = require(resolve('node_modules', '@loadable', 'webpack-plugin'));
+            common.push(new LoadablePlugin({
+                filename: '../../server/ssr/loadable-stats.json',
+            }) as webpack.Plugin);
+        } catch (error) {}
+    }
 
     // 当dllplugin生成的manifest文件存在时，添加dllplugin插件
     const manifestPath: string = Env.isProductuction ? 'env/manifest.json' : 'env/manifest.dev.json';

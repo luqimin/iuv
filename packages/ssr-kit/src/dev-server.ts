@@ -15,6 +15,10 @@ class DevServer extends BaseClass<any> {
         runtime.rootPath && (process.env.IME_PATH = runtime.rootPath);
         config.clientPath && (process.env.IME_CLIENT_PATH = config.clientPath);
         config.serverPath && (process.env.IME_SERVER_PATH = config.serverPath);
+        config.ssr = {
+            enable: true,
+            type: 'react',
+        };
 
         const pack = creatPack(
             {
