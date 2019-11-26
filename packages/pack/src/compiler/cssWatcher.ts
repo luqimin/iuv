@@ -11,7 +11,6 @@ import { STATIC_FILES_IGNORE } from '../const/filename';
 
 export const cssWatcher = (options: IMEPackOptions, config: IMEPackConfig): void => {
     const dir = Path.resolve(options.clientSourcePath!, 'style');
-    console.log(dir);
     // 监听非js文件
     logger.success('开始监听「客户端style文件夹」...');
     watch(
