@@ -3,9 +3,13 @@ import * as extend from 'extend';
 import { getWebpackConfig, getDllCompilerConfig, getSSRCompilerConfig } from './webpack';
 
 import { clientCompiler } from './compiler/clientCompiler';
+import { clinetStaticCompiler } from './compiler/clientStaticCompiler';
+import { cssCompiler } from './compiler/cssCompiler';
 import { serverStaticCompiler } from './compiler/serverStaticCompiler';
 import { tsCompiler } from './compiler/tsCompiler';
 import { clientWatcher } from './compiler/clientWatcher';
+import { clientStaticWatcher } from './compiler/clientStaticWatcher';
+import { cssWatcher } from './compiler/cssWatcher';
 import { tsWatcher } from './compiler/tsWatcher';
 import { serverStaticWatcher } from './compiler/serverStaticWatcher';
 
@@ -48,6 +52,20 @@ export default class IMEPack {
     }
 
     /**
+     * 打包client静态资源(image等)
+     */
+    public compileClientStatic(): Promise<void[]> {
+        return clinetStaticCompiler(this.options);
+    }
+
+    /**
+     * 打包css
+     */
+    public clientCssCompile(): void {
+        return cssCompiler(this.options, this.config).all();
+    }
+
+    /**
      * 打包client dll
      */
     public compileClientDll(): Promise<webpack.Stats> {
@@ -83,6 +101,20 @@ export default class IMEPack {
     public watchClient(): Promise<void> {
         const webpackConfig: webpack.Configuration = getWebpackConfig(this.options, this.config);
         return clientWatcher(webpackConfig, 'client');
+    }
+
+    /**
+     * watch client样式文件
+     */
+    public watchCss(): void {
+        cssWatcher(this.options, this.config);
+    }
+
+    /**
+     * watch client静态文件
+     */
+    public watchClientStatic(): void {
+        clientStaticWatcher(this.options);
     }
 
     /**
