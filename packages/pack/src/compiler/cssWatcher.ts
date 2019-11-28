@@ -25,11 +25,7 @@ export const cssWatcher = (options: IMEPackOptions, config: IMEPackConfig): void
             switch (event) {
                 case 'change':
                 case 'add':
-                    const file = Path.basename(path);
-                    // 不是隐藏文件且不是目录且不以_开头
-                    if (lstatSync(path).isFile() && file.indexOf('.') !== 0 && file.substr(0, 1) !== '_') {
-                        cssCompiler(options, config).single(file);
-                    }
+                    cssCompiler(options, config).all();
                     break;
                 case 'unlink':
                 case 'unlinkDir':
