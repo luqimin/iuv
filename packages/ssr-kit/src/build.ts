@@ -7,6 +7,24 @@ interface Params {
 }
 
 class Builder extends BaseClass<Params> {
+    protected didInit() {
+        const runtime = this.runtime,
+            config = this.config;
+
+        // 当前为ssr项目
+        Object.assign(this.config, {
+            ssr: {
+                enable: true,
+                type: 'react',
+            },
+        });
+
+        // 将iuv相关路径写进环境变量
+        runtime.rootPath && (process.env.IUV_PATH = runtime.rootPath);
+        config.clientPath && (process.env.IUV_CLIENT_PATH = config.clientPath);
+        config.serverPath && (process.env.IUV_SERVER_PATH = config.serverPath);
+    }
+
     protected async running() {
         const runtime = this.runtime,
             config = this.config;

@@ -9,11 +9,11 @@ import {pathExistsSync, writeFileSync, readFileSync, readdirSync, lstatSync} fro
 import logger from '../utils/logger';
 import mkdirs from '../utils/mkdirs';
 import { Env } from '../webpack/env';
-import { IMEPackOptions, IMEPackConfig } from '../const/config';
+import { IUVPackOptions, IUVPackConfig } from '../const/config';
 import lessTheme from '../const/lessTheme';
 import postcssPlugins from '../webpack/postcss';
 
-export const cssCompiler = (options: IMEPackOptions, config: IMEPackConfig): any => {
+export const cssCompiler = (options: IUVPackOptions, config: IUVPackConfig): any => {
     const source = Path.resolve(options.clientSourcePath!, 'style');
     const dest = Path.resolve(options.clientPath!, 'style');
 

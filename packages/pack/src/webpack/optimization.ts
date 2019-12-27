@@ -1,9 +1,9 @@
 import * as UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import * as TerserPlugin from 'terser-webpack-plugin';
 
-import { IMEPackConfig } from '../const/config';
+import { IUVPackConfig } from '../const/config';
 
-export default (config: IMEPackConfig) => {
+export default (config: IUVPackConfig) => {
     return {
         common: {
             splitChunks: {

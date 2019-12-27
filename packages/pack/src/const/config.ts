@@ -1,7 +1,7 @@
 /**
  * pack示例参数接口
  */
-export interface IMEPackOptions {
+export interface IUVPackOptions {
     /**
      * pack工作目录（上下文）
      */
@@ -31,9 +31,9 @@ export interface IMEPackOptions {
 /**
  * pack额外参数接口
  */
-export interface IMEPackConfig {
+export interface IUVPackConfig {
     /**
-     * 打印ime调试日志
+     * 打印调试日志
      */
     debug?: boolean;
 
@@ -86,7 +86,7 @@ interface SSR {
 /**
  * pack默认配置参数
  */
-export const DEFAULT_OPTIONS: IMEPackOptions = {
+export const DEFAULT_OPTIONS: IUVPackOptions = {
     /**
      * 上下文选取当前程序运行路径
      */
@@ -94,8 +94,8 @@ export const DEFAULT_OPTIONS: IMEPackOptions = {
 };
 
 /**
- * 继承自ime或者额外设置的配置内容（用于覆盖pack内置webpack、babel配置）
+ * 继承自iuv或者额外设置的配置内容（用于覆盖pack内置webpack、babel配置）
  */
-export const DEFAULT_PACK_CONFIG: IMEPackConfig = {
+export const DEFAULT_PACK_CONFIG: IUVPackConfig = {
     browsers: ['last 2 version'],
 };

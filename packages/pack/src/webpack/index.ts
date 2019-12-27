@@ -16,19 +16,19 @@ import getDllConfig from './dll.config';
 import getSSRConfig from './ssr.config';
 
 import { Env, smartEnv, initEnv } from './env';
-import { IMEPackConfig, IMEPackOptions } from '../const/config';
+import { IUVPackConfig, IUVPackOptions } from '../const/config';
 
 /**
  * 获取webpack配置
  * @param options - 目录参数
- * @param config - ime配置
+ * @param config - iuv配置
  */
 export const getWebpackConfig = (
-    options: IMEPackOptions,
+    options: IUVPackOptions,
     /**
-     * ime配置
+     * iuv配置
      */
-    config?: IMEPackConfig
+    config?: IUVPackConfig
 ): webpack.Configuration => {
     const cwd = options.context;
 

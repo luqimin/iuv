@@ -5,7 +5,7 @@ import * as path from 'path';
 import * as webpack from 'webpack';
 import { pathExistsSync, readdirSync, lstatSync } from 'fs-extra';
 import getName from '../utils/getEntryName';
-import { IMEPackOptions } from '../const/config';
+import { IUVPackOptions } from '../const/config';
 
 // 默认入口名
 const clientEntryNames: string[] = ['index.ts', 'index.tsx', 'entry.ts', 'entry.tsx'];
@@ -16,7 +16,7 @@ const ssrEntryNames: string[] = ['ssr.ts', 'ssr.tsx'];
 // ssr默认入口目录
 const ssrEntryDirectory: string = 'ssr';
 
-export default (options: IMEPackOptions, isSSR?: boolean): webpack.Entry => {
+export default (options: IUVPackOptions, isSSR?: boolean): webpack.Entry => {
     const entryNames = isSSR ? ssrEntryNames : clientEntryNames;
     const entryDirectory = isSSR ? ssrEntryDirectory : clientEntryDirectory;
 

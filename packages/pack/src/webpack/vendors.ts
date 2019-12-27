@@ -1,6 +1,6 @@
-import { IMEPackConfig } from '../const/config';
+import { IUVPackConfig } from '../const/config';
 
-export default (config: IMEPackConfig) => {
+export default (config: IUVPackConfig) => {
     return {
         common: Array.isArray(config.dll) ? config.dll : [],
         production: [],

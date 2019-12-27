@@ -1,8 +1,8 @@
 /**
  * 获取入口js/css文件版本号
  */
-import { IMEPackConfig } from '../const/config';
+import { IUVPackConfig } from '../const/config';
 
-export const getVersion = (config: IMEPackConfig) => {
+export const getVersion = (config: IUVPackConfig) => {
     return config.version ? config.version : '[hash:4]';
 };

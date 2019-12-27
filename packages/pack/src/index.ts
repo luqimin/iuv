@@ -13,25 +13,25 @@ import { cssWatcher } from './compiler/cssWatcher';
 import { tsWatcher } from './compiler/tsWatcher';
 import { serverStaticWatcher } from './compiler/serverStaticWatcher';
 
-import { DEFAULT_OPTIONS, DEFAULT_PACK_CONFIG, IMEPackOptions, IMEPackConfig } from './const/config';
+import { DEFAULT_OPTIONS, DEFAULT_PACK_CONFIG, IUVPackOptions, IUVPackConfig } from './const/config';
 
-export default class IMEPack {
+export default class IUVPack {
     /**
      * pack参数，用于全局配置
      */
-    protected options: IMEPackOptions;
+    protected options: IUVPackOptions;
 
     /**
      * pack配置 用户不同任务额外配置参数
      */
-    protected config: IMEPackConfig;
+    protected config: IUVPackConfig;
 
     /**
      * 项目根目录
      */
     protected context: string;
 
-    constructor(options: IMEPackOptions, config?: IMEPackConfig) {
+    constructor(options: IUVPackOptions, config?: IUVPackConfig) {
         this.options = extend(true, {}, DEFAULT_OPTIONS, options);
         this.config = extend(true, {}, DEFAULT_PACK_CONFIG, config);
 
@@ -85,7 +85,7 @@ export default class IMEPack {
      * 打包server
      */
     public compileServer() {
-        tsCompiler(this.options.context, 'tsconfig.server.json');
+        return tsCompiler(this.options.context, 'tsconfig.server.json');
     }
 
     /**
@@ -141,11 +141,11 @@ export default class IMEPack {
 }
 
 /**
- * 导出IMEPack实例
+ * 导出IUVPack实例
  */
-export const Pack = IMEPack;
+export const Pack = IUVPack;
 
 /**
  * 导出配置参数类型定义
  */
-export { IMEPackOptions, IMEPackConfig };
+export { IUVPackOptions, IUVPackConfig };

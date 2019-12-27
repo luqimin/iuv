@@ -5,9 +5,9 @@ import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 import { resolve, Env } from './env';
 import { getVersion } from './version';
-import { IMEPackConfig, IMEPackOptions } from '../const/config';
+import { IUVPackConfig, IUVPackOptions } from '../const/config';
 
-export default (options: IMEPackOptions, config: IMEPackConfig) => {
+export default (options: IUVPackOptions, config: IUVPackConfig) => {
     const common = [
         new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /^\.\/zh-cn$/),
         new webpack.BannerPlugin({

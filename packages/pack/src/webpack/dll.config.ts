@@ -5,12 +5,12 @@ import vendors from './vendors';
 import Optimization from './optimization';
 
 import { Env, resolve, initEnv, smartEnv } from './env';
-import { IMEPackOptions, IMEPackConfig } from '../const/config';
+import { IUVPackOptions, IUVPackConfig } from '../const/config';
 
 /**
  * 打包client的webpack dllPlugin内容
  */
-export default (options: IMEPackOptions, config?: IMEPackConfig): webpack.Configuration => {
+export default (options: IUVPackOptions, config?: IUVPackConfig): webpack.Configuration => {
     const cwd = options.context;
 
     initEnv(cwd);

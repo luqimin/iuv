@@ -6,10 +6,10 @@ import * as fs from 'fs-extra';
 import * as klawSync from 'klaw-sync';
 import * as anymatch from 'anymatch';
 
-import { IMEPackOptions } from '../const/config';
+import { IUVPackOptions } from '../const/config';
 import { STATIC_FILES_IGNORE } from '../const/filename';
 
-export const serverStaticCompiler = (options: IMEPackOptions): Promise<void[]> => {
+export const serverStaticCompiler = (options: IUVPackOptions): Promise<void[]> => {
     const dir = options.serverSourcePath!;
     const dest = options.serverPath!;
     const files = klawSync(dir, {

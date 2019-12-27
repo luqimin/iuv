@@ -39,7 +39,7 @@ export const clientWatcher = (webpackConfig: webpack.Configuration, title: strin
 
             let logMsg: string = `webpack打包「${title}」成功, 共打包${info.filteredModules}个模块`;
             if (stats.hasWarnings()) {
-                const isVerbose = process.env.IME_LOGLEVEL === 'verbose';
+                const isVerbose = process.env.IUV_LOGLEVEL === 'verbose';
                 if (isVerbose) {
                     logger.warn(info.warnings.join('\n'));
                     logMsg += `, 警告${info.warnings.length}次`;

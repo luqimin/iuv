@@ -1,6 +1,6 @@
-import { IMEPackConfig, IMEPackOptions, Pack } from '@iuv/pack';
+import { IUVPackConfig, IUVPackOptions, Pack } from '@iuv/pack';
 
-export default (runtime: IMEPackOptions, config: IMEPackConfig) => {
+export default (runtime: IUVPackOptions, config: IUVPackConfig) => {
     return new Pack(
         {
             context: runtime.context!,

@@ -11,12 +11,12 @@ import Resolve from './resolve';
 import ResolveLoader from './resolveLoader';
 
 import { Env, initEnv, smartEnv } from './env';
-import { IMEPackConfig, IMEPackOptions } from '../const/config';
+import { IUVPackConfig, IUVPackOptions } from '../const/config';
 
 /**
  * 打包服务端ssr文件
  */
-export default (options: IMEPackOptions, config?: IMEPackConfig): webpack.Configuration => {
+export default (options: IUVPackOptions, config?: IUVPackConfig): webpack.Configuration => {
     const cwd = options.context;
 
     initEnv(cwd);

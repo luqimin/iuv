@@ -12,9 +12,9 @@ import * as decoratorsPlugin from '@babel/plugin-proposal-decorators';
 import * as classPropertiesPlugin from '@babel/plugin-proposal-class-properties';
 import * as regeneratorPlugin from '@babel/plugin-transform-regenerator';
 
-import { IMEPackConfig } from '../const/config';
+import { IUVPackConfig } from '../const/config';
 
-const babelRuntimePath = path.resolve(process.env.IME_ROOT_PATH || process.cwd(), 'node_modules/@babel/runtime');
+const babelRuntimePath = path.resolve(process.env.IUV_ROOT_PATH || process.cwd(), 'node_modules/@babel/runtime');
 
 export interface BabelLoaderOptions extends babel.TransformOptions {
     cacheDirectory: boolean;
@@ -23,7 +23,7 @@ export interface BabelLoaderOptions extends babel.TransformOptions {
 /**
  * 获取babel配置
  */
-export const getBabelConfig = (context: string, isSSR: boolean, config: IMEPackConfig): BabelLoaderOptions => {
+export const getBabelConfig = (context: string, isSSR: boolean, config: IUVPackConfig): BabelLoaderOptions => {
     const enableImportStyle: boolean = !isSSR;
 
     const presets = [

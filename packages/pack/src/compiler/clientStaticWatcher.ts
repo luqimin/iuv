@@ -5,10 +5,10 @@ import * as Path from 'path';
 import * as fs from 'fs-extra';
 import watch from '../utils/watch';
 import logger from '../utils/logger';
-import { IMEPackOptions } from '../const/config';
+import { IUVPackOptions } from '../const/config';
 import { STATIC_FILES_IGNORE } from '../const/filename';
 
-export const clientStaticWatcher = (options: IMEPackOptions): void => {
+export const clientStaticWatcher = (options: IUVPackOptions): void => {
     const dir = Path.resolve(options.clientSourcePath!, 'assets');
     const dest = Path.resolve(options.clientPath!, 'assets');
 

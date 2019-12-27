@@ -1,9 +1,9 @@
 import * as path from 'path';
 import { getVersion } from './version';
 
-import { IMEPackConfig, IMEPackOptions } from '../const/config';
+import { IUVPackConfig, IUVPackOptions } from '../const/config';
 
-export default (options: IMEPackOptions, config: IMEPackConfig) => {
+export default (options: IUVPackOptions, config: IUVPackConfig) => {
     return {
         common: {
             path: path.resolve(options.clientPath!, 'dist'),
@@ -11,12 +11,12 @@ export default (options: IMEPackOptions, config: IMEPackConfig) => {
         },
         production: {
             filename: config.disableUniqueOutput ? '[name].js' : `[name].${getVersion(config)}.js`,
-            chunkFilename: config.disableUniqueOutput ? '[name].ime.js' : '[name].[chunkhash:4].js',
+            chunkFilename: config.disableUniqueOutput ? '[name].iuv.js' : '[name].[chunkhash:4].js',
             publicPath: config.publicPath || '/dist/',
         },
         development: {
             filename: '[name].js',
-            chunkFilename: '[name].ime.js',
+            chunkFilename: '[name].iuv.js',
             publicPath: '/dist/',
         },
     };

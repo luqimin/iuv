@@ -5,9 +5,9 @@ import * as autoprefixer from 'autoprefixer';
 import * as cssnano from 'cssnano';
 
 import { Env } from './env';
-import { IMEPackConfig } from '../const/config';
+import { IUVPackConfig } from '../const/config';
 
-const getPlugins = (config: IMEPackConfig) => {
+const getPlugins = (config: IUVPackConfig) => {
     const postcssPlugins: any[] = [
         autoprefixer({
             env: Env.env,

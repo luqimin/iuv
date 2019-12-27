@@ -1,8 +1,8 @@
 import * as path from 'path';
 import * as fs from 'fs-extra';
-import { IMEPackOptions } from '../const/config';
+import { IUVPackOptions } from '../const/config';
 
-export default (options: IMEPackOptions) => {
+export default (options: IUVPackOptions) => {
     // 只能计算alias
     const alias: { [key: string]: string } = {};
 

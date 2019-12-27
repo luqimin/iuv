@@ -1,14 +1,14 @@
 import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 import getTsConfigPath from '../typescript/getConfigFile';
-import { IMEPackConfig, IMEPackOptions } from '../const/config';
+import { IUVPackConfig, IUVPackOptions } from '../const/config';
 import { Env, resolve } from './env';
 import lessTheme from '../const/lessTheme';
 import postcssPlugins from './postcss';
 import { getBabelConfig } from '../babel';
 import { isDevDquipment } from '../utils/platform';
 
-export default (options: IMEPackOptions, config: IMEPackConfig) => {
+export default (options: IUVPackOptions, config: IUVPackConfig) => {
     const common = {
         rules: [
             {

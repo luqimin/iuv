@@ -8,11 +8,11 @@ import * as anymatch from 'anymatch';
 import * as imagemin from 'imagemin';
 import * as imageminJpegtran from 'imagemin-jpegtran';
 import imageminPngquant from 'imagemin-pngquant';
-import { IMEPackOptions } from '../const/config';
+import { IUVPackOptions } from '../const/config';
 import { STATIC_FILES_IGNORE } from '../const/filename';
 import { Env } from '../webpack/env';
 
-export const clinetStaticCompiler = (options: IMEPackOptions): Promise<void[]> => {
+export const clinetStaticCompiler = (options: IUVPackOptions): Promise<void[]> => {
     const dir = options.clientSourcePath!;
     const dest = options.clientPath!;
     const files = klawSync(dir, {
