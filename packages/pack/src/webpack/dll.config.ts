@@ -15,7 +15,7 @@ export default (options: IUVPackOptions, config?: IUVPackConfig): webpack.Config
 
     initEnv(cwd);
 
-    const outputFilename = config && config.dllOutputSuffix ? `[name]_${config.dllOutputSuffix}.js` : '[name].js';
+    const outputFilename = config && config.dllOutputSuffix ? `[name]${config.dllOutputSuffix}.js` : '[name].js';
 
     return {
         context: cwd,
