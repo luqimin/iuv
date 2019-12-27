@@ -65,7 +65,12 @@ export interface IUVPackConfig {
     /**
      * webpack dllPlugin vendors
      */
-    dll?: { [key: string]: string };
+    dll?: string[];
+
+    /**
+     * webpack dllPlugin output filename
+     */
+    dllOutputSuffix?: string;
 
     /**
      * less modifyVars配置

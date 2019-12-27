@@ -15,6 +15,8 @@ export default (options: IUVPackOptions, config?: IUVPackConfig): webpack.Config
 
     initEnv(cwd);
 
+    const outputFilename = config && config.dllOutputSuffix ? `[name]_${config.dllOutputSuffix}.js` : '[name].js';
+
     return {
         context: cwd,
         name: 'clientDll',
@@ -23,7 +25,7 @@ export default (options: IUVPackOptions, config?: IUVPackConfig): webpack.Config
         entry: { vendor: smartEnv(vendors, config) },
         output: {
             path: path.resolve(options.clientPath!, 'dist'),
-            filename: Env.isProductuction ? '[name].js' : '[name].dev.js',
+            filename: Env.isProductuction ? outputFilename : '[name].dev.js',
             library: '[name]',
         },
         optimization: smartEnv(Optimization, config),
