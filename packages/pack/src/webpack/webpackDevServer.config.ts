@@ -8,11 +8,9 @@ import Output from './output';
 import Resolve from './resolve';
 import ResolveLoader from './resolveLoader';
 import Module from './module';
-import Plugins from './plugins';
+import Plugins from './devServerPlugins';
 import Optimization from './optimization';
-
-import getDllConfig from './dll.config';
-import getSSRConfig from './ssr.config';
+import DevServer from './devServer';
 
 import { Env, smartEnv, initEnv } from './env';
 import { IUVPackConfig, IUVPackOptions } from '../const/config';
@@ -22,7 +20,7 @@ import { IUVPackConfig, IUVPackOptions } from '../const/config';
  * @param options - 目录参数
  * @param config - iuv配置
  */
-export const getWebpackConfig = (
+export const getWebpackDevServerConfig = (
     options: IUVPackOptions,
     /**
      * iuv配置
@@ -47,16 +45,6 @@ export const getWebpackConfig = (
         module: smartEnv(Module, options, config),
         plugins: smartEnv(Plugins, options, config),
         devtool: Env.isProductuction ? false : 'cheap-module-eval-source-map',
-        devServer: {},
+        devServer: smartEnv(DevServer, options, config),
     };
 };
-
-/**
- * 获取webpack dll打包配置
- */
-export const getDllCompilerConfig = getDllConfig;
-
-/**
- * 获取ss打包配置
- */
-export const getSSRCompilerConfig = getSSRConfig;

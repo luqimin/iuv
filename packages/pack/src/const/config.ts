@@ -1,3 +1,5 @@
+import * as WebpackDevServer from 'webpack-dev-server';
+
 /**
  * pack示例参数接口
  */
@@ -81,6 +83,11 @@ export interface IUVPackConfig {
      * ssr开关
      */
     ssr?: SSR;
+
+    /**
+     * {} 可自定义配置覆盖
+     */
+    webpackDevServer?: WebpackDevServer.Configuration;
 }
 
 interface SSR {

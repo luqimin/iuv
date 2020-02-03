@@ -1,7 +1,9 @@
 import * as webpack from 'webpack';
 import * as extend from 'extend';
 import { getWebpackConfig, getDllCompilerConfig, getSSRCompilerConfig } from './webpack';
+import { getWebpackDevServerConfig } from './webpack/webpackDevServer.config';
 
+import { webpackDevServer } from './compiler/webpackDevServer';
 import { clientCompiler } from './compiler/clientCompiler';
 import { clinetStaticCompiler } from './compiler/clientStaticCompiler';
 import { cssCompiler } from './compiler/cssCompiler';
@@ -41,6 +43,22 @@ export default class IUVPack {
         }
 
         this.context = this.options.context;
+    }
+
+    /**
+     * 启动webpackDevServer
+     */
+    public webpackDevServer(): void {
+        const webpackConfig: webpack.Configuration = getWebpackDevServerConfig(this.options, this.config);
+        webpackDevServer(webpackConfig, 'server');
+    }
+
+    /**
+     * 打包webpackDevServer src
+     */
+    public compileWebpackDevServerSrc(): Promise<webpack.Stats> {
+        const webpackConfig: webpack.Configuration = getWebpackDevServerConfig(this.options, this.config);
+        return webpackDevServer(webpackConfig, 'build', 'src') as Promise<any>;
     }
 
     /**
