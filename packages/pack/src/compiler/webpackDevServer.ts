@@ -7,7 +7,8 @@ import * as WebpackDevServer from 'webpack-dev-server';
 /**
  * 启动webapckDevServer
  */
-export const webpackDevServer = (webpackConfig: webpack.Configuration, type: 'build' | 'server', title?: string): Promise<webpack.Stats> | void => {
+export const webpackDevServer =
+(webpackConfig: webpack.Configuration, type: 'build' | 'server', title?: string): Promise<webpack.Stats> | void => {
     const buildSpin = type === 'server' ? spin('启动webpackDevServer中...') : spin(`编译「${title}」js文件中...`);
     buildSpin.start();
     if (type === 'build') {
