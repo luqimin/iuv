@@ -1,7 +1,6 @@
 import * as webpack from 'webpack';
 import * as extend from 'extend';
-import { getWebpackConfig, getDllCompilerConfig, getSSRCompilerConfig } from './webpack';
-import { getWebpackDevServerConfig } from './webpack/webpackDevServer.config';
+import { getWebpackConfig, getDllCompilerConfig, getSSRCompilerConfig, getWebpackDevServerCompilerConfig } from './webpack';
 
 import { webpackDevServer } from './compiler/webpackDevServer';
 import { clientCompiler } from './compiler/clientCompiler';
@@ -49,7 +48,7 @@ export default class IUVPack {
      * 启动webpackDevServer
      */
     public webpackDevServer(): void {
-        const webpackConfig: webpack.Configuration = getWebpackDevServerConfig(this.options, this.config);
+        const webpackConfig: webpack.Configuration = getWebpackDevServerCompilerConfig(this.options, this.config);
         webpackDevServer(webpackConfig, 'server');
     }
 
@@ -57,7 +56,7 @@ export default class IUVPack {
      * 打包webpackDevServer src
      */
     public compileWebpackDevServerSrc(): Promise<webpack.Stats> {
-        const webpackConfig: webpack.Configuration = getWebpackDevServerConfig(this.options, this.config);
+        const webpackConfig: webpack.Configuration = getWebpackDevServerCompilerConfig(this.options, this.config);
         return webpackDevServer(webpackConfig, 'build', 'src') as Promise<any>;
     }
 

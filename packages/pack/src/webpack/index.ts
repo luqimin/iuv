@@ -13,6 +13,7 @@ import Optimization from './optimization';
 
 import getDllConfig from './dll.config';
 import getSSRConfig from './ssr.config';
+import getWebpackDevServerConfig from './webpackDevServer.config';
 
 import { Env, smartEnv, initEnv } from './env';
 import { IUVPackConfig, IUVPackOptions } from '../const/config';
@@ -60,3 +61,8 @@ export const getDllCompilerConfig = getDllConfig;
  * 获取ss打包配置
  */
 export const getSSRCompilerConfig = getSSRConfig;
+
+/**
+ * 获取webpackDevServer打包配置
+ */
+export const getWebpackDevServerCompilerConfig = getWebpackDevServerConfig;

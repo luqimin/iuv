@@ -20,7 +20,7 @@ import { IUVPackConfig, IUVPackOptions } from '../const/config';
  * @param options - 目录参数
  * @param config - iuv配置
  */
-export const getWebpackDevServerConfig = (
+export default (
     options: IUVPackOptions,
     /**
      * iuv配置
