@@ -5,17 +5,19 @@ import Builder from './build';
 import creatPack from './utils/packFactory';
 
 class DevServer extends BaseClass<any> {
-    protected async running() {
+    protected didInit() {
         const runtime = this.runtime,
             config = this.config;
 
-        // 将ime相关路径写进环境变量
-        runtime.rootPath && (process.env.IME_PATH = runtime.rootPath);
-        config.clientPath && (process.env.IME_CLIENT_PATH = config.clientPath);
-        config.serverPath && (process.env.IME_SERVER_PATH = config.serverPath);
-        config.ssr = {
-            enable: false,
-        };
+        // 将iuv相关路径写进环境变量
+        runtime.rootPath && (process.env.IUV_PATH = runtime.rootPath);
+        config.clientPath && (process.env.IUV_CLIENT_PATH = config.clientPath);
+        config.serverPath && (process.env.IUV_SERVER_PATH = config.serverPath);
+    }
+
+    protected async running() {
+        const runtime = this.runtime,
+            config = this.config;
 
         const pack = creatPack(
             {
