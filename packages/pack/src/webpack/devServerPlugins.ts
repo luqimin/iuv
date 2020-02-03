@@ -41,6 +41,7 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
                         collapseWhitespace: true,
                         minifyCSS: true,
                     },
+                    favicon: faviconPath,
                     inject: true,
                     template: htmlPath,
                 },
