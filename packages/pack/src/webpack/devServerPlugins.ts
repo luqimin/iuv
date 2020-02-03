@@ -29,6 +29,7 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
     }
 
     const htmlPath = path.resolve(options.clientSourcePath!, '../public/index.html');
+    const faviconPath = path.resolve(options.clientSourcePath!, '../public/favicon.ico');
 
     return {
         common,
@@ -53,6 +54,7 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
         development: [
             new HtmlWebpackPlugin(
                   {
+                    favicon: faviconPath,
                     inject: true,
                     template: htmlPath,
                   },
