@@ -9,7 +9,7 @@ export const initEnv = (_cwd: string): void => {
 
 export const Env = {
     // 当前node环境
-    get env(): string {
+    get env(): 'common' | 'production' | 'development' | string {
         return process.env.NODE_ENV || 'development';
     },
     // 是否生产环境
@@ -22,11 +22,11 @@ export const Env = {
     },
 };
 
-export interface EnvObject {
-    common: object | any[];
-    production: object | any[];
-    development: object | any[];
-    [env: string]: object | any[];
+export interface EnvObject<T = object | any[]> {
+    common: T;
+    production: T;
+    development: T;
+    [env: string]: T;
 }
 
 /**

@@ -3,12 +3,12 @@ import * as path from 'path';
 import * as webpack from 'webpack';
 import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-import { resolve, Env } from './env';
+import { resolve, Env, EnvObject } from './env';
 import { getVersion } from './version';
 import { IUVPackConfig, IUVPackOptions } from '../const/config';
 
 export default (options: IUVPackOptions, config: IUVPackConfig) => {
-    const common = [
+    const common: webpack.Plugin[] = [
         new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /^\.\/zh-cn$/),
         new webpack.BannerPlugin({
             banner: `Updated by iuv at ${new Date().toLocaleString()}`,
@@ -37,19 +37,35 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
         );
     }
 
-    return {
-        common,
-        production: [
+    const production: webpack.Plugin[] = [
             new MiniCssExtractPlugin({
                 filename: config.disableUniqueOutput ? '[name].css' : `[name].${getVersion(config)}.css`,
                 chunkFilename: config.disableUniqueOutput ? '[name].iuv.css' : '[name].[chunkhash:4].css',
             }),
         ],
-        development: [
+        development: webpack.Plugin[] = [
             new MiniCssExtractPlugin({
                 filename: '[name].css',
                 chunkFilename: '[name].iuv.css',
             }),
-        ],
+        ];
+
+    const configObject: EnvObject<webpack.Plugin[]> = {
+        common,
+        production,
+        development,
     };
+
+    // 合并用户配置
+    if (Array.isArray(config.webpackPlugins)) {
+        configObject.common = config.webpackPlugins;
+        configObject.production = [];
+        configObject.development = [];
+    } else if (typeof config.webpackPlugins === 'function') {
+        configObject.common = config.webpackPlugins(common.concat(configObject[Env.env]));
+        configObject.production = [];
+        configObject.development = [];
+    }
+
+    return configObject;
 };

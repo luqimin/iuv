@@ -1,4 +1,5 @@
 import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { Module } from 'webpack';
 
 import getTsConfigPath from '../typescript/getConfigFile';
 import { IUVPackConfig, IUVPackOptions } from '../const/config';
@@ -9,11 +10,11 @@ import { getBabelConfig } from '../babel';
 import { isDevDquipment } from '../utils/platform';
 
 export default (options: IUVPackOptions, config: IUVPackConfig) => {
-    const common = {
+    const common: Module = {
         rules: [
             {
                 test: /\.(less|css)$/,
-                include: [options.clientSourcePath],
+                include: [options.clientSourcePath!],
                 use: [
                     MiniCssExtractPlugin.loader,
                     {
@@ -42,7 +43,7 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
             },
             {
                 test: /\.(less|css)$/,
-                exclude: [options.clientSourcePath],
+                exclude: [options.clientSourcePath!],
                 use: [
                     MiniCssExtractPlugin.loader,
                     { loader: 'css-loader' },
@@ -90,6 +91,13 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
             },
         ],
     };
+
+    // 合并用户配置
+    if (Array.isArray(config.webpackLoaders)) {
+        common.rules = config.webpackLoaders;
+    } else if (typeof config.webpackLoaders === 'function') {
+        common.rules = config.webpackLoaders(common.rules);
+    }
 
     return {
         common,

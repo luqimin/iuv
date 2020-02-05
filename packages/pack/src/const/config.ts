@@ -1,4 +1,5 @@
 import * as WebpackDevServer from 'webpack-dev-server';
+import { Plugin, RuleSetRule } from 'webpack';
 
 /**
  * pack示例参数接口
@@ -88,6 +89,16 @@ export interface IUVPackConfig {
      * {} 可自定义配置覆盖
      */
     webpackDevServer?: WebpackDevServer.Configuration;
+
+    /**
+     * webpack plugins
+     */
+    webpackPlugins?: Plugin[] | ((plugins: Plugin[]) => Plugin[]);
+
+    /**
+     * webpack loaders
+     */
+    webpackLoaders?: RuleSetRule[] | ((rules: RuleSetRule[]) => RuleSetRule[]);
 }
 
 interface SSR {
