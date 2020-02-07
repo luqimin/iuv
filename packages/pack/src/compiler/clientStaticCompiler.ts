@@ -42,7 +42,7 @@ export const clinetStaticCompiler = (options: IUVPackOptions): Promise<void[]> =
         },
     });
 
-    const copyPromises: Array<Promise<any>> = files.map(({ path }) => {
+    const copyPromises: Promise<any>[] = files.map(({ path }) => {
         const relPath: string = Path.relative(dir, path);
         const relFullpath: string = Path.resolve(dir, path);
         const newPath: string = Path.resolve(dest, relPath);
@@ -51,7 +51,11 @@ export const clinetStaticCompiler = (options: IUVPackOptions): Promise<void[]> =
         // 生产环境压缩图片
         if (
             Env.isProductuction &&
-            (extname === '.png' || extname === '.jpg' || extname === '.gif' || extname === '.jpeg' || extname === '.svg')
+            (extname === '.png' ||
+                extname === '.jpg' ||
+                extname === '.gif' ||
+                extname === '.jpeg' ||
+                extname === '.svg')
         ) {
             return imagemin([relFullpath], {
                 destination: newDir,

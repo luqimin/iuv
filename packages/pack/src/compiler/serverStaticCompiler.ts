@@ -32,7 +32,7 @@ export const serverStaticCompiler = (options: IUVPackOptions): Promise<void[]> =
         },
     });
 
-    const copyPromises: Array<Promise<void>> = files.map(({ path }) => {
+    const copyPromises: Promise<void>[] = files.map(({ path }) => {
         const relPath: string = Path.relative(dir, path);
         const newPath: string = Path.resolve(dest, relPath);
         return fs.copy(path, newPath);

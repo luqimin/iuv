@@ -5,6 +5,7 @@ declare module 'babel-plugin-import';
 declare module '@babel/plugin-proposal-class-properties';
 declare module '@babel/plugin-proposal-decorators';
 declare module '@babel/plugin-proposal-object-rest-spread';
+declare module '@babel/plugin-proposal-optional-chaining';
 declare module '@babel/plugin-syntax-dynamic-import';
 declare module '@babel/plugin-transform-regenerator';
 declare module '@babel/plugin-transform-runtime';

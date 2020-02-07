@@ -10,6 +10,7 @@ import * as syntaxDyamicImportPlugin from '@babel/plugin-syntax-dynamic-import';
 import * as restSpreadPlugin from '@babel/plugin-proposal-object-rest-spread';
 import * as decoratorsPlugin from '@babel/plugin-proposal-decorators';
 import * as classPropertiesPlugin from '@babel/plugin-proposal-class-properties';
+import * as optionalChainingPlugin from '@babel/plugin-proposal-optional-chaining';
 import * as regeneratorPlugin from '@babel/plugin-transform-regenerator';
 
 import { IUVPackConfig } from '../const/config';
@@ -66,16 +67,6 @@ export const getBabelConfig = (context: string, isSSR: boolean, config: IUVPackC
         [
             importPlugin,
             {
-                libraryName: 'ant-design-pro',
-                libraryDirectory: 'lib',
-                style: enableImportStyle,
-                camel2DashComponentName: false,
-            },
-            'ant-design-pro',
-        ],
-        [
-            importPlugin,
-            {
                 libraryName: 'lodash',
                 libraryDirectory: '',
                 camel2DashComponentName: false,
@@ -87,6 +78,7 @@ export const getBabelConfig = (context: string, isSSR: boolean, config: IUVPackC
         [regeneratorPlugin, { asyncGenerators: false }],
         syntaxDyamicImportPlugin,
         restSpreadPlugin,
+        optionalChainingPlugin,
     ];
 
     try {
