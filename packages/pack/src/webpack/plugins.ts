@@ -41,12 +41,14 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
             new MiniCssExtractPlugin({
                 filename: config.disableUniqueOutput ? '[name].css' : `[name].${getVersion(config)}.css`,
                 chunkFilename: config.disableUniqueOutput ? '[name].iuv.css' : '[name].[chunkhash:4].css',
+                ignoreOrder: true,
             }),
         ],
         development: webpack.Plugin[] = [
             new MiniCssExtractPlugin({
                 filename: '[name].css',
                 chunkFilename: '[name].iuv.css',
+                ignoreOrder: true,
             }),
         ];
 
