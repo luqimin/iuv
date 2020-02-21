@@ -9,8 +9,8 @@ const publicPath = '/dist';
  */
 export default (options: IUVPackOptions, config: IUVPackConfig) => {
     const _config = Object.assign({
-        index: `${publicPath}/index.html`,
-        contentBase: Path.join(options.clientPath!),
+        index: 'index.html',
+        contentBase: Path.join(options.clientPath!, 'dist'),
         host: '127.0.0.1',
         port: 8080,
         inline: true,
@@ -18,6 +18,7 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
         watchContentBase: true,
         disableHostCheck: true,
         stats: 'minimal',
+        historyApiFallback: true,
         publicPath,
     }, config.webpackDevServer || {});
     return {

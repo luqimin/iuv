@@ -53,7 +53,7 @@ export const webpackDevServer =
                 console.log(err);
                 return;
             }
-            console.log(`Starting server on http://${host}:${port}/dist/index.html`);
+            console.log(`Starting server on http://${host}:${port}`);
         });
     }
 };

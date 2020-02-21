@@ -17,7 +17,7 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
         development: {
             filename: '[name].js',
             chunkFilename: '[name].iuv.js',
-            publicPath: '/dist/',
+            publicPath: config.publicPath || '/dist/',
         },
     };
 };
