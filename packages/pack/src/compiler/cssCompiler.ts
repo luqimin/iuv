@@ -12,6 +12,7 @@ import { Env } from '../webpack/env';
 import { IUVPackOptions, IUVPackConfig } from '../const/config';
 import lessTheme from '../const/lessTheme';
 import postcssPlugins from '../webpack/postcss';
+import { getVersion } from '../webpack/version';
 
 export const cssCompiler = (options: IUVPackOptions, config: IUVPackConfig): any => {
     const source = Path.resolve(options.clientSourcePath!, 'style');
@@ -27,7 +28,9 @@ export const cssCompiler = (options: IUVPackOptions, config: IUVPackConfig): any
         logger.info(`样式 文件${file}编译中...`);
         const sourceFilePath = Path.resolve(source, file);
         let destFilePath = Path.resolve(dest, file);
-        destFilePath = destFilePath.replace(Path.extname(destFilePath), '.css');
+        // 添加版本号
+        const version = Env.isDevelopment ? '.css' : `.${getVersion(config)}.css`;
+        destFilePath = destFilePath.replace(Path.extname(destFilePath), version);
 
         const lessOption: Less.Options = {
             filename: sourceFilePath,
