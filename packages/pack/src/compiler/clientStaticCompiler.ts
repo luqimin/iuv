@@ -5,12 +5,8 @@ import * as Path from 'path';
 import * as fs from 'fs-extra';
 import * as klawSync from 'klaw-sync';
 import * as anymatch from 'anymatch';
-import * as imagemin from 'imagemin';
-import * as imageminJpegtran from 'imagemin-jpegtran';
-import imageminPngquant from 'imagemin-pngquant';
 import { IUVPackOptions } from '../const/config';
 import { STATIC_FILES_IGNORE } from '../const/filename';
-import { Env } from '../webpack/env';
 
 export const clinetStaticCompiler = (options: IUVPackOptions): Promise<void[]> => {
     const dir = options.clientSourcePath!;
@@ -44,31 +40,8 @@ export const clinetStaticCompiler = (options: IUVPackOptions): Promise<void[]> =
 
     const copyPromises: Promise<any>[] = files.map(({ path }) => {
         const relPath: string = Path.relative(dir, path);
-        const relFullpath: string = Path.resolve(dir, path);
         const newPath: string = Path.resolve(dest, relPath);
-        const newDir: string = Path.dirname(newPath);
-        const extname = Path.extname(relPath);
-        // 生产环境压缩图片
-        if (
-            Env.isProductuction &&
-            (extname === '.png' ||
-                extname === '.jpg' ||
-                extname === '.gif' ||
-                extname === '.jpeg' ||
-                extname === '.svg')
-        ) {
-            return imagemin([relFullpath], {
-                destination: newDir,
-                plugins: [
-                    imageminJpegtran(),
-                    imageminPngquant({
-                        quality: [0.6, 0.8],
-                    }),
-                ],
-            });
-        } else {
-            return fs.copy(path, newPath);
-        }
+        return fs.copy(path, newPath);
     });
 
     return Promise.all(copyPromises);
