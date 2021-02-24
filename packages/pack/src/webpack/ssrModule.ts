@@ -15,17 +15,19 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
                     {
                         loader: 'css-loader',
                         options: {
-                            onlyLocals: true,
                             modules: {
-                                localIdentName: Env.isProductuction ? '[hash:base64:4]' : '[path][name]_[local]',
+                                exportOnlyLocals: true,
+                                localIdentName: Env.isProductuction ? '[contenthash:base64:4]' : '[path][name]_[local]',
                             },
                         },
                     },
                     {
                         loader: 'less-loader',
                         options: {
-                            javascriptEnabled: true,
-                            modifyVars: Object.assign(lessTheme, config.lessModifyVars),
+                            lessOptions: {
+                                javascriptEnabled: true,
+                                modifyVars: Object.assign(lessTheme, config.lessModifyVars),
+                            }
                         },
                     },
                 ],
@@ -43,15 +45,18 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
                     {
                         loader: 'less-loader',
                         options: {
-                            javascriptEnabled: true,
-                            modifyVars: Object.assign(lessTheme, config.lessModifyVars),
+                            lessOptions: {
+                                javascriptEnabled: true,
+                                modifyVars: Object.assign(lessTheme, config.lessModifyVars),
+                            }
                         },
                     },
                 ],
             },
             {
                 test: /\.(png|jpg|gif|jpeg|mp4|mp3|wma|svg|eot|ttf|woff|woff2)$/,
-                use: ['file-loader?limit=1000&name=files/[md5:hash:base64:10].[ext]'],
+                type: 'asset/resource',
+                // use: ['file-loader?limit=1000&name=files/[md5:hash:base64:10].[ext]'],
             },
             {
                 test: /\.(js|jsx)$/i,
@@ -67,7 +72,7 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
                         loader: 'ts-loader',
                         options: {
                             // 生产环境仅打包不做类型check
-                            transpileOnly: Env.isProductuction,
+                            transpileOnly: true,
                             configFile: getTsConfigPath(resolve('')),
                             context: resolve(''),
                             colors: isDevDquipment,

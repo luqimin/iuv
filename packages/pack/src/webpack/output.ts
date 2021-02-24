@@ -8,6 +8,7 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
         common: {
             path: path.resolve(options.clientPath!, 'dist'),
             crossOriginLoading: 'anonymous',
+            assetModuleFilename: 'files/[hash][ext][query]',
         },
         production: {
             filename: config.disableUniqueOutput ? '[name].js' : `[name].${getVersion(config)}.js`,

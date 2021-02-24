@@ -4,7 +4,7 @@
  */
 import * as Path from 'path';
 import * as less from 'less';
-import * as postcss from 'postcss';
+import postcss, { ProcessOptions } from 'postcss';
 import {pathExistsSync, writeFileSync, readFileSync, readdirSync, lstatSync} from 'fs-extra';
 import logger from '../utils/logger';
 import mkdirs from '../utils/mkdirs';
@@ -45,7 +45,7 @@ export const cssCompiler = (options: IUVPackOptions, config: IUVPackConfig): any
         // 编译less
         less.render(fileString, lessOption)
             .then( (lessRes) => {
-                const postOption: postcss.ProcessOptions = {
+                const postOption: ProcessOptions = {
                     from: sourceFilePath,
                     to: destFilePath,
                 };

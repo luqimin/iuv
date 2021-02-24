@@ -1,5 +1,5 @@
-import * as UglifyJsPlugin from 'uglifyjs-webpack-plugin';
-import * as TerserPlugin from 'terser-webpack-plugin';
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
 
 import { IUVPackConfig } from '../const/config';
 

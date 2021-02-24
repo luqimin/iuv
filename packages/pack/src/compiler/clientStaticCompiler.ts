@@ -3,8 +3,8 @@
  */
 import * as Path from 'path';
 import * as fs from 'fs-extra';
-import * as klawSync from 'klaw-sync';
-import * as anymatch from 'anymatch';
+import klawSync from 'klaw-sync';
+import anymatch from 'anymatch';
 import { IUVPackOptions } from '../const/config';
 import { STATIC_FILES_IGNORE } from '../const/filename';
 

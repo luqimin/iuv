@@ -3,7 +3,7 @@
  */
 
 import * as fs from 'fs-extra';
-import * as ts from 'typescript';
+import ts from 'typescript';
 import getConfigPath from '../typescript/getConfigFile';
 import logger, { addColor } from '../utils/logger';
 
@@ -22,13 +22,7 @@ const reportDiagnostic = (diagnostic: ts.Diagnostic): void => {
         );
         return;
     }
-    const { line, character } = diagnostic.file.getLineAndCharacterOfPosition(diagnostic.start!);
-    logger.error(
-        addColor(`TS Error ${diagnostic.code}`, 'gray'),
-        `${diagnostic.file.fileName} (${line + 1}:${character + 1})`,
-        ':',
-        ts.flattenDiagnosticMessageText(diagnostic.messageText, formatHost.getNewLine())
-    );
+    logger.log(ts.formatDiagnosticsWithColorAndContext([diagnostic], formatHost));
 };
 
 /**

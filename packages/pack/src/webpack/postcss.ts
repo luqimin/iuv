@@ -1,8 +1,8 @@
 /**
  * postcss插件
  */
-import * as autoprefixer from 'autoprefixer';
-import * as cssnano from 'cssnano';
+import autoprefixer from 'autoprefixer';
+import cssnano from 'cssnano';
 
 import { Env } from './env';
 import { IUVPackConfig } from '../const/config';

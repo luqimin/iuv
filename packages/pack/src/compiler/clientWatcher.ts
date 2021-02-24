@@ -2,7 +2,7 @@
  * 监听并编译文件
  */
 
-import * as webpack from 'webpack';
+import webpack from 'webpack';
 import logger from '../utils/logger';
 
 export const clientWatcher = (webpackConfig: webpack.Configuration, title: string): Promise<void> => {
@@ -15,7 +15,7 @@ export const clientWatcher = (webpackConfig: webpack.Configuration, title: strin
     let compiledTimes: number = 0;
 
     return new Promise((resolve) => {
-        compiler.watch({}, (err, stats) => {
+        compiler.watch({aggregateTimeout: 1000}, (err, stats) => {
             if (compiledTimes === 0) {
                 resolve();
             }
@@ -30,25 +30,17 @@ export const clientWatcher = (webpackConfig: webpack.Configuration, title: strin
                 return;
             }
 
+            if (!stats) {
+                logger.error('webpack stats 不存在');
+                return
+            }
+
             const info = stats.toJson('minimal');
 
             if (stats.hasErrors()) {
-                logger.error(info.errors.join('\n'));
+                (info.errors || []).forEach(err=>logger.log(err.message))
                 return;
             }
-
-            let logMsg: string = `webpack打包「${title}」成功, 共打包${info.filteredModules}个模块`;
-            if (stats.hasWarnings()) {
-                const isVerbose = process.env.IUV_LOGLEVEL === 'verbose';
-                if (isVerbose) {
-                    logger.warn(info.warnings.join('\n'));
-                    logMsg += `, 警告${info.warnings.length}次`;
-                } else {
-                    logMsg += `, 警告${info.warnings.length}次, --verbose 查看详情`;
-                }
-            }
-
-            logger.success(logMsg);
         });
     });
 };

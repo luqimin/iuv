@@ -1,7 +1,7 @@
 /**
  * repl日志封装
  */
-import * as chalk from 'chalk';
+import chalk from 'chalk';
 import getTime from './time';
 import { isDevDquipment } from './platform';
 
@@ -30,8 +30,8 @@ const logger = {
     error(...args: (string | number)[]): void {
         console.log(prefix(), ...args.map((text) => addColor(String(text), 'red')));
     },
-    log(...args: string[]): void {
-        console.log(...args);
+    log(...args: string[] | any[]): void {
+        console.log(prefix(), ...args);
     },
 };
 

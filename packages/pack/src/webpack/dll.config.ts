@@ -1,5 +1,5 @@
 import * as path from 'path';
-import * as webpack from 'webpack';
+import webpack from 'webpack';
 
 import vendors from './vendors';
 import Optimization from './optimization';

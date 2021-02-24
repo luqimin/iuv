@@ -2,8 +2,9 @@
  * webpack dllPlugin配置
  */
 import * as path from 'path';
-import * as webpack from 'webpack';
-import * as nodeExternals from 'webpack-node-externals';
+import webpack from 'webpack';
+import nodeExternals from 'webpack-node-externals';
+import WebpackBar from 'webpackbar';
 
 import Entry from './entry';
 import Module from './ssrModule';
@@ -35,6 +36,11 @@ export default (options: IUVPackOptions, config?: IUVPackConfig): webpack.Config
             libraryExport: 'default',
         },
         module: smartEnv(Module, options, config || {}),
+        plugins: [new WebpackBar({
+            name: '[iuv] ssr',
+            color: 'yellow',
+            basic: true,
+        })],
         resolve: smartEnv(Resolve, options),
         resolveLoader: smartEnv(ResolveLoader),
         devtool: false,

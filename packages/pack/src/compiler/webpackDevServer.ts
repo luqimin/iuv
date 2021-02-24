@@ -1,8 +1,8 @@
-import * as webpack from 'webpack';
+import webpack from 'webpack';
 import spin from '../utils/spin';
 import logger from '../utils/logger';
 import { isDevDquipment } from '../utils/platform';
-import * as WebpackDevServer from 'webpack-dev-server';
+import WebpackDevServer from 'webpack-dev-server';
 
 /**
  * 启动webapckDevServer
@@ -24,6 +24,10 @@ export const webpackDevServer =
                     }
                     reject(err);
                     return;
+                }
+                if (!stats) {
+                    logger.error('webpack stats 不存在');
+                    return
                 }
                 console.log(
                     `webpack打包「${title}」结果\n` +

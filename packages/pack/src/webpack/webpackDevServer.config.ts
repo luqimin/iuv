@@ -1,7 +1,7 @@
 /**
  * 获取webpack配置
  */
-import * as webpack from 'webpack';
+import webpack from 'webpack';
 
 import Entry from './entry';
 import Output from './output';
@@ -44,7 +44,7 @@ export default (
         resolveLoader: smartEnv(ResolveLoader),
         module: smartEnv(Module, options, config),
         plugins: smartEnv(Plugins, options, config),
-        devtool: Env.isProductuction ? false : 'cheap-module-eval-source-map',
+        devtool: Env.isProductuction ? false : 'eval-cheap-module-source-map',
         devServer: smartEnv(DevServer, options, config),
     };
 };

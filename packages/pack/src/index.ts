@@ -1,5 +1,5 @@
-import * as webpack from 'webpack';
-import * as extend from 'extend';
+import webpack from 'webpack';
+import extend from 'extend';
 import { getWebpackConfig, getDllCompilerConfig, getSSRCompilerConfig, getWebpackDevServerCompilerConfig } from './webpack';
 
 import { webpackDevServer } from './compiler/webpackDevServer';

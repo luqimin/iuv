@@ -1,6 +1,6 @@
 import * as path from 'path';
-import * as assert from 'assert';
-import * as extend from 'extend';
+import assert from 'assert';
+import extend from 'extend';
 
 let cwd: string = '';
 export const initEnv = (_cwd: string): void => {

@@ -1,5 +1,5 @@
 import * as WebpackDevServer from 'webpack-dev-server';
-import { Plugin, RuleSetRule } from 'webpack';
+import { RuleSetRule } from 'webpack';
 
 /**
  * pack示例参数接口
@@ -93,7 +93,7 @@ export interface IUVPackConfig {
     /**
      * webpack plugins
      */
-    webpackPlugins?: Plugin[] | ((plugins: Plugin[]) => Plugin[]);
+    webpackPlugins?: any[] | ((plugins: any[]) => any[]);
 
     /**
      * webpack loaders

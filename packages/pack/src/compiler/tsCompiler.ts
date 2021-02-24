@@ -3,7 +3,7 @@
  */
 
 import * as fs from 'fs-extra';
-import * as ts from 'typescript';
+import ts from 'typescript';
 import getConfigPath from '../typescript/getConfigFile';
 import logger, { addColor } from '../utils/logger';
 

@@ -2,7 +2,7 @@
  * 获取入口文件
  */
 import * as path from 'path';
-import * as webpack from 'webpack';
+import webpack from 'webpack';
 import { pathExistsSync, readdirSync, lstatSync } from 'fs-extra';
 import getName from '../utils/getEntryName';
 import { IUVPackOptions } from '../const/config';

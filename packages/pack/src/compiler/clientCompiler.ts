@@ -1,4 +1,4 @@
-import * as webpack from 'webpack';
+import webpack from 'webpack';
 import spin from '../utils/spin';
 import logger from '../utils/logger';
 import { isDevDquipment } from '../utils/platform';
@@ -24,6 +24,12 @@ export const clientCompiler = (webpackConfig: webpack.Configuration, title: stri
                 reject(err);
                 return;
             }
+
+            if (!stats) {
+                logger.error('webpack stats 不存在');
+                return
+            }
+            
             console.log(
                 `webpack打包「${title}」结果\n` +
                     stats.toString({

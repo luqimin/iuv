@@ -13,7 +13,9 @@
     "baseUrl": "./",
     "removeComments": false,
     "moduleResolution": "node",
-    "esModuleInterop": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
     "strict": true
     // "allowJs": true,                       /* Allow javascript files to be compiled. */
     // "checkJs": true,                       /* Report errors in .js files. */
@@ -63,7 +65,7 @@
     // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
   },
   "include": [
-    "./index.d.ts",
+    "./*.d.ts",
     "src/**/*.ts"
   ],
   "exclude": [
