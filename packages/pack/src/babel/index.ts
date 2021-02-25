@@ -37,7 +37,7 @@ export const getBabelConfig = (context: string, isSSR: boolean, config: IUVPackC
                 },
                 modules: false,
                 useBuiltIns: 'entry',
-                corejs: '2',
+                corejs: '3',
             },
         ],
         presetsReact,
