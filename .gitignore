@@ -67,7 +67,7 @@ types/
 .git
 
 # npm
-package-lock.json
+# package-lock.json
 
 *.js
 packages/*/build
