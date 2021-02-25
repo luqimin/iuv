@@ -38,7 +38,7 @@ export const clientWatcher = (webpackConfig: webpack.Configuration, title: strin
             const info = stats.toJson('minimal');
 
             if (stats.hasErrors()) {
-                (info.errors || []).forEach(err=>logger.log(err.message))
+                (info.errors || []).forEach(statErr=>logger.log(statErr.message))
                 return;
             }
         });

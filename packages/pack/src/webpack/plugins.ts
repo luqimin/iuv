@@ -64,16 +64,16 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
                     memoryLimit: 3000,
                     configOverwrite: {
                         // 不检查server端类型
-                        exclude: [options.serverSourcePath || 'node_modules']
-                    }
+                        exclude: [options.serverSourcePath || 'node_modules'],
+                    },
                 },
                 logger: {
                     issues: {
                         info: (m) => logger.log('[类型检查]', m),
                         log: (m) => logger.log('[类型检查]', m),
                         error: (m) => logger.log('[类型检查]', m),
-                    }
-                }
+                    },
+                },
             }),
             new WebpackBar({
                 name: '[iuv] client',

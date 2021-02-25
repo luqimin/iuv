@@ -29,7 +29,7 @@ export const clientCompiler = (webpackConfig: webpack.Configuration, title: stri
                 logger.error('webpack stats 不存在');
                 return
             }
-            
+
             console.log(
                 `webpack打包「${title}」结果\n` +
                     stats.toString({

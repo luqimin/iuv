@@ -31,7 +31,7 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
                             postcssOptions: {
                                 ident: 'postcss',
                                 plugins: postcssPlugins(config),
-                            }
+                            },
                         },
                     },
                     {
@@ -40,7 +40,7 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
                             lessOptions: {
                                 javascriptEnabled: true,
                                 modifyVars: Object.assign(lessTheme, config.lessModifyVars),
-                            }
+                            },
                         },
                     },
                 ],
@@ -57,7 +57,7 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
                             postcssOptions: {
                                 ident: 'postcss',
                                 plugins: postcssPlugins(config),
-                            }
+                            },
                         },
                     },
                     {
@@ -66,7 +66,7 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
                             lessOptions: {
                                 javascriptEnabled: true,
                                 modifyVars: Object.assign(lessTheme, config.lessModifyVars),
-                            }
+                            },
                         },
                     },
                 ],

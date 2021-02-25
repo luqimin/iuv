@@ -27,7 +27,7 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
                             lessOptions: {
                                 javascriptEnabled: true,
                                 modifyVars: Object.assign(lessTheme, config.lessModifyVars),
-                            }
+                            },
                         },
                     },
                 ],
@@ -48,7 +48,7 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
                             lessOptions: {
                                 javascriptEnabled: true,
                                 modifyVars: Object.assign(lessTheme, config.lessModifyVars),
-                            }
+                            },
                         },
                     },
                 ],
