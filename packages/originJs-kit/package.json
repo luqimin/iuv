@@ -1,6 +1,6 @@
 {
   "name": "@iuv/originjs-kit",
-  "version": "1.1.0-alpha.0",
+  "version": "1.2.0-alpha.0",
   "description": "Tools set for iuv originJs projects",
   "main": "index.js",
   "scripts": {
@@ -36,8 +36,8 @@
   "author": "xs",
   "license": "ISC",
   "dependencies": {
-    "@iuv/core": "^1.0.1",
-    "@iuv/pack": "^1.4.0-alpha.0",
+    "@iuv/core": "^1.1.0-alpha.0",
+    "@iuv/pack": "^1.5.0-alpha.0",
     "cross-spawn": "^6.0.5",
     "extend": "^3.0.2",
     "lodash": "^4.17.11",
