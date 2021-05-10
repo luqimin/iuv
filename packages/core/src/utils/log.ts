@@ -2,10 +2,10 @@
  * repl日志封装
  */
 import chalk from 'chalk';
-import * as moment from 'moment';
+import dayjs from 'dayjs';
 
 export const prefix = (): string => {
-    return chalk.magenta(`[${moment().format('HH:mm:ss')}]`) + chalk.blue('[iuv] ');
+    return chalk.magenta(`[${dayjs().format('HH:mm:ss')}]`) + chalk.blue('[iuv] ');
 };
 
 export const logger = {

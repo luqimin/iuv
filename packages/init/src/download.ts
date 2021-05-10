@@ -12,7 +12,7 @@ import { readFile } from './utils/readFile';
 import spin from './utils/spin';
 
 // download promisify化
-download[util.promisify.custom] = (_demoUrl: string, _dest: string, option: { [key: string]: any }) => {
+download[util.promisify.custom] = (_demoUrl: string, _dest: string, option: { [key: string]: any }): Promise<void> => {
     return new Promise((resolve, reject) => {
         download(_demoUrl, _dest, option, (error: Error) => {
             if (error) {
@@ -41,7 +41,7 @@ export default async (
     /**
      * 模板存放位置
      */
-    registry?: string
+    registry?: string,
 ) => {
     try {
         const downloadSpin = spin('正在初始化项目...');
@@ -62,9 +62,7 @@ export default async (
             // 安装依赖
             logger.info('安装依赖... \n');
             const projectPackage: { [key: string]: any } = readFile(path.join(dest, 'package.json'));
-            const dependencies: string[] = Object.keys(
-                Object.assign(projectPackage.dependencies, projectPackage.devDependencies)
-            );
+            const dependencies: string[] = Object.keys(Object.assign(projectPackage.dependencies, projectPackage.devDependencies));
             await install(dest, dependencies, registry);
         } catch (error) {
             logger.error('安装依赖失败, 请稍后手动安装');

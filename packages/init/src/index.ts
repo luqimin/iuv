@@ -1,13 +1,16 @@
 import { BaseClass } from '@iuv/core';
 import * as fs from 'fs';
 import * as inquirer from 'inquirer';
-import * as _ from 'lodash';
+import { find } from 'lodash';
 import * as path from 'path';
 
 import { ssrDemoUrl } from './config';
 import InitProject from './download';
 
-const PROJECT_TYPES = [{ name: 'react同构项目', value: 'ssr' }, { name: '自定义(需提供git地址)', value: 'git' }];
+const PROJECT_TYPES = [
+    { name: 'react同构项目', value: 'ssr' },
+    { name: '自定义(需提供git地址)', value: 'git' },
+];
 
 interface InitParams {
     project: string;
@@ -64,7 +67,7 @@ class Init extends BaseClass<InitParams> {
                 message:
                     '确认这些选择? \n' +
                     `新建目录: ${answers.project}\n` +
-                    `项目类型: ${_.find(PROJECT_TYPES, (o) => o.value === answers.type)!.name}\n` +
+                    `项目类型: ${find(PROJECT_TYPES, (o) => o.value === answers.type)!.name}\n` +
                     (answers.git ? `模板git: ${answers.git}` : ''),
             });
 

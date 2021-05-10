@@ -1,0 +1,70 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true
+    },
+    "extends": ["airbnb-typescript", "airbnb/hooks", "plugin:prettier/recommended"],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": "tsconfig.json",
+        "sourceType": "module"
+    },
+    "plugins": ["@typescript-eslint"],
+    "rules": {
+        "max-classes-per-file": ["error", 2],
+        "max-len": [
+            "error",
+            {
+                "code": 138
+            }
+        ],
+        "max-lines": ["error", 500],
+        "no-plusplus": 0,
+        "no-underscore-dangle": 0,
+        "no-param-reassign": ["error", { "props": false }],
+        "class-methods-use-this": 0,
+        "one-var": 0,
+        "consistent-return": 0,
+        "no-restricted-globals": 0,
+        // import规则
+        "import/prefer-default-export": 0,
+        "import/order": [
+            "error",
+            {
+                "newlines-between": "always",
+                "alphabetize": { "order": "asc", "caseInsensitive": true },
+                "groups": ["builtin", "external", "internal", ["parent", "sibling", "index"]],
+                "pathGroups": [
+                    {
+                        "pattern": "@**/**",
+                        "group": "internal",
+                        "position": "before"
+                    }
+                ],
+                "pathGroupsExcludedImportTypes": ["builtin"]
+            }
+        ],
+        "import/no-extraneous-dependencies": 0,
+        // ts规则
+        "@typescript-eslint/indent": ["error", 4],
+        "@typescript-eslint/comma-dangle": [
+            "error",
+            {
+                "arrays": "always-multiline",
+                "objects": "always-multiline",
+                "imports": "always-multiline",
+                "exports": "always-multiline",
+                "functions": "never"
+            }
+        ],
+        "@typescript-eslint/naming-convention": [
+            "error",
+            { "selector": "variableLike", "format": ["camelCase", "PascalCase", "snake_case", "UPPER_CASE"] }
+        ],
+        "@typescript-eslint/no-unused-expressions": [
+            "error",
+            { "allowShortCircuit": true, "allowTernary": true, "allowTaggedTemplates": true }
+        ]
+    }
+}

@@ -1,4 +1,4 @@
-import * as spawn from 'cross-spawn';
+import spawn from 'cross-spawn';
 
 /**
  * 安装npm依赖包
@@ -6,7 +6,7 @@ import * as spawn from 'cross-spawn';
  * @param dependencies - 需要安装的所有依赖
  * @param registry - npm registry
  */
-const install = (cwd: string, dependencies: string[], registry?: string): Promise<undefined> => {
+const install = (cwd: string, dependencies: string[], registry?: string): Promise<void> => {
     return new Promise((resolve, reject) => {
         const command: string = 'npm';
         const args: string[] = ['install', '--save', '--save-exact', '--loglevel', 'error'].concat(dependencies);

@@ -2,7 +2,7 @@
  * node服务端任务
  */
 import { BaseClass } from '@iuv/core';
-import * as extend from 'extend';
+import extend from 'extend';
 import { debounce } from 'lodash';
 import * as nodemon from 'nodemon';
 import * as path from 'path';

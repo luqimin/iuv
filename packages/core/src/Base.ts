@@ -110,14 +110,12 @@ export abstract class BaseClass<P = undefined> {
         // 初始化相关配置后增加一个钩子，返回false则任务不执行
         if (this.didInit && (await this.didInit()) === false) {
             process.exit(0);
-            return;
         }
 
         // willRun...
         this.runtime.willRun = this.willRun && (await this.willRun());
         if (this.runtime.willRun === false) {
             process.exit(0);
-            return;
         }
 
         // running...

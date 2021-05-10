@@ -6,7 +6,7 @@ import { OptionDefinition } from 'command-line-args';
 import * as fs from 'fs';
 import * as path from 'path';
 
-import { ime as imeConfigFromPkg, iuv as iuvConfigFromPkg } from '../../package.json';
+import { iuv as iuvConfigFromPkg } from '../../package.json';
 import { configNames } from '../config';
 import { readFile } from '../utils/readFile';
 
@@ -41,7 +41,7 @@ const getConfig = (curPath: string): IUVProjectConfig | undefined => {
     }
 
     // 从package.json获取配置信息
-    return iuvConfigFromPkg || imeConfigFromPkg || projectConfig;
+    return iuvConfigFromPkg || projectConfig;
 };
 
 export const getProjectInfo = (root?: string): IUVProject => {

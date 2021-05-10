@@ -74,7 +74,7 @@ export const getBabelConfig = (context: string, isSSR: boolean, config: IUVPackC
             'lodash',
         ],
         [decoratorsPlugin, { legacy: true }],
-        [classPropertiesPlugin, { loose: true }],
+        [classPropertiesPlugin, { loose: false }],
         [regeneratorPlugin, { asyncGenerators: false }],
         syntaxDyamicImportPlugin,
         restSpreadPlugin,
