@@ -1,3 +1,5 @@
+import { logger } from "./logger";
+
 export default (moduleId: string) => {
     let _modulePath: string, _module: any;
     try {
@@ -15,6 +17,7 @@ export default (moduleId: string) => {
 
         return _module;
     } catch (error) {
+        logger.error(error)
         return null;
     }
 };
