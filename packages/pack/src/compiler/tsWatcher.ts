@@ -4,11 +4,12 @@
 
 import * as fs from 'fs-extra';
 import ts from 'typescript';
+
 import getConfigPath from '../typescript/getConfigFile';
 import logger, { addColor } from '../utils/logger';
 
 const formatHost: ts.FormatDiagnosticsHost = {
-    getCanonicalFileName: (_path) => _path,
+    getCanonicalFileName: (p) => p,
     getCurrentDirectory: ts.sys.getCurrentDirectory,
     getNewLine: () => ts.sys.newLine,
 };
@@ -18,7 +19,7 @@ const reportDiagnostic = (diagnostic: ts.Diagnostic): void => {
         logger.error(
             addColor(`TS Error ${diagnostic.code}`, 'gray'),
             ':',
-            ts.flattenDiagnosticMessageText(diagnostic.messageText, formatHost.getNewLine())
+            ts.flattenDiagnosticMessageText(diagnostic.messageText, formatHost.getNewLine()),
         );
         return;
     }
@@ -40,11 +41,7 @@ export const tsWatcher = (context: string, configName?: string): void => {
     }
 
     // 从tsconfig.json中获取ts配置
-    const configParseResult = ts.parseJsonConfigFileContent(
-        fs.readJsonSync(configPath, { encoding: 'utf8' }),
-        ts.sys,
-        context
-    );
+    const configParseResult = ts.parseJsonConfigFileContent(fs.readJsonSync(configPath, { encoding: 'utf8' }), ts.sys, context);
 
     const createProgram = ts.createSemanticDiagnosticsBuilderProgram;
     const host = ts.createWatchCompilerHost(
@@ -53,12 +50,12 @@ export const tsWatcher = (context: string, configName?: string): void => {
         ts.sys,
         createProgram,
         reportDiagnostic,
-        reportWatchStatusChanged
+        reportWatchStatusChanged,
     );
 
     const origCreateProgram = host.createProgram;
-    host.createProgram = (rootNames: ReadonlyArray<string> | undefined, options, _host, oldProgram) => {
-        return origCreateProgram(rootNames, options, _host, oldProgram);
+    host.createProgram = (rootNames: ReadonlyArray<string> | undefined, options, h, oldProgram) => {
+        return origCreateProgram(rootNames, options, h, oldProgram);
     };
 
     const origPostProgramCreate = host.afterProgramCreate;

@@ -36,7 +36,7 @@ class Builder extends BaseClass<Params> {
                 serverPath: config.serverPath,
                 serverSourcePath: config.serverSourcePath,
             },
-            config as any
+            config as any,
         );
 
         await pack.compileClientDll();

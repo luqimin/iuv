@@ -9,6 +9,6 @@ export default (runtime: IUVPackOptions, config: IUVPackConfig) => {
             serverPath: runtime.serverPath,
             serverSourcePath: runtime.serverSourcePath,
         },
-        config
+        config,
     );
 };

@@ -8,6 +8,7 @@ let babelLoaderPath: string = '';
 
 try {
     babelLoaderPath = require.resolve('babel-loader');
+    // eslint-disable-next-line no-empty
 } catch (error) {}
 
 const modules = ['node_modules'];

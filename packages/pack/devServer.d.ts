@@ -1,4 +1,4 @@
-import { Configuration} from 'webpack'
+import {} from 'webpack';
 
 declare module 'webpack' {
     export interface Configuration {

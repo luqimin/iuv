@@ -1,7 +1,9 @@
+/* eslint-disable no-param-reassign */
 /**
  * 文件及目录变动监听封装
  */
 import * as fs from 'fs';
+
 import * as chokidar from 'chokidar';
 
 /**
@@ -21,7 +23,7 @@ const Watch = (
     /**
      * 文件change回调函数
      */
-    cb?: watchCallback
+    cb?: watchCallback,
 ): chokidar.FSWatcher => {
     if (typeof options === 'function') {
         cb = options;

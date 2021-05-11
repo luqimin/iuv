@@ -1,20 +1,19 @@
-import webpack from 'webpack';
 import extend from 'extend';
-import { getWebpackConfig, getDllCompilerConfig, getSSRCompilerConfig, getWebpackDevServerCompilerConfig } from './webpack';
+import webpack from 'webpack';
 
-import { webpackDevServer } from './compiler/webpackDevServer';
 import { clientCompiler } from './compiler/clientCompiler';
 import { clinetStaticCompiler } from './compiler/clientStaticCompiler';
-import { cssCompiler } from './compiler/cssCompiler';
-import { serverStaticCompiler } from './compiler/serverStaticCompiler';
-import { tsCompiler } from './compiler/tsCompiler';
-import { clientWatcher } from './compiler/clientWatcher';
 import { clientStaticWatcher } from './compiler/clientStaticWatcher';
+import { clientWatcher } from './compiler/clientWatcher';
+import { cssCompiler } from './compiler/cssCompiler';
 import { cssWatcher } from './compiler/cssWatcher';
-import { tsWatcher } from './compiler/tsWatcher';
+import { serverStaticCompiler } from './compiler/serverStaticCompiler';
 import { serverStaticWatcher } from './compiler/serverStaticWatcher';
-
+import { tsCompiler } from './compiler/tsCompiler';
+import { tsWatcher } from './compiler/tsWatcher';
+import { webpackDevServer } from './compiler/webpackDevServer';
 import { DEFAULT_OPTIONS, DEFAULT_PACK_CONFIG, IUVPackOptions, IUVPackConfig } from './const/config';
+import { getWebpackConfig, getDllCompilerConfig, getSSRCompilerConfig, getWebpackDevServerCompilerConfig } from './webpack';
 
 export default class IUVPack {
     /**

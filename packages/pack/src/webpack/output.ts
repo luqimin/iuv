@@ -1,7 +1,7 @@
 import * as path from 'path';
-import { getVersion } from './version';
 
 import { IUVPackConfig, IUVPackOptions } from '../const/config';
+import { getVersion } from './version';
 
 export default (options: IUVPackOptions, config: IUVPackConfig) => {
     return {

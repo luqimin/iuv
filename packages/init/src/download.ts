@@ -1,10 +1,11 @@
 /**
  * 初始化项目
  */
-import chalk from 'chalk';
-import * as download from 'download-git-repo';
 import * as path from 'path';
 import * as util from 'util';
+
+import chalk from 'chalk';
+import * as download from 'download-git-repo';
 
 import install from './utils/install';
 import { logger } from './utils/logger';
@@ -12,9 +13,10 @@ import { readFile } from './utils/readFile';
 import spin from './utils/spin';
 
 // download promisify化
-download[util.promisify.custom] = (_demoUrl: string, _dest: string, option: { [key: string]: any }): Promise<void> => {
+// eslint-disable-next-line no-import-assign
+download[util.promisify.custom] = (demoUrl: string, dest: string, option: { [key: string]: any }): Promise<void> => {
     return new Promise((resolve, reject) => {
-        download(_demoUrl, _dest, option, (error: Error) => {
+        download(demoUrl, dest, option, (error: Error) => {
             if (error) {
                 reject(error);
                 return;

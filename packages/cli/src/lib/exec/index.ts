@@ -1,5 +1,6 @@
-import { BaseClass } from '@iuv/core';
 import { CommandLineOptions } from 'command-line-args';
+
+import { BaseClass } from '@iuv/core';
 
 import { getOptions } from '../../utils/args';
 import defineEnv from '../../utils/defineEnv';

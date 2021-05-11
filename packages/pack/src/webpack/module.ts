@@ -1,13 +1,13 @@
 import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { ModuleOptions, RuleSetRule } from 'webpack';
 
-import getTsConfigPath from '../typescript/getConfigFile';
-import { IUVPackConfig, IUVPackOptions } from '../const/config';
-import { Env, resolve } from './env';
-import lessTheme from '../const/lessTheme';
-import postcssPlugins from './postcss';
 import { getBabelConfig } from '../babel';
+import { IUVPackConfig, IUVPackOptions } from '../const/config';
+import lessTheme from '../const/lessTheme';
+import getTsConfigPath from '../typescript/getConfigFile';
 import { isDevDquipment } from '../utils/platform';
+import { Env, resolve } from './env';
+import postcssPlugins from './postcss';
 
 export default (options: IUVPackOptions, config: IUVPackConfig) => {
     const common: ModuleOptions = {

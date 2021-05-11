@@ -1,5 +1,6 @@
-import { BaseClass } from '@iuv/core';
 import * as fs from 'fs';
+
+import { BaseClass } from '@iuv/core';
 
 import Builder from './build';
 import ETS from './ets';
@@ -27,7 +28,7 @@ class DevServer extends BaseClass<any> {
                 serverPath: config.serverPath,
                 serverSourcePath: config.serverSourcePath,
             },
-            config as any
+            config as any,
         );
 
         if (!fs.existsSync(config.clientPath!) || !fs.existsSync(config.serverPath!)) {

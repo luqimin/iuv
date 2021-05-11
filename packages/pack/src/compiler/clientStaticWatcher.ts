@@ -2,11 +2,13 @@
  * 客户端静态文件(image等)打包监听服务
  */
 import * as Path from 'path';
+
 import * as fs from 'fs-extra';
-import watch from '../utils/watch';
-import logger from '../utils/logger';
+
 import { IUVPackOptions } from '../const/config';
 import { STATIC_FILES_IGNORE } from '../const/filename';
+import logger from '../utils/logger';
+import watch from '../utils/watch';
 
 export const clientStaticWatcher = (options: IUVPackOptions): void => {
     const dir = Path.resolve(options.clientSourcePath!, 'assets');
@@ -36,7 +38,7 @@ export const clientStaticWatcher = (options: IUVPackOptions): void => {
             ignoreInitial: false,
             ignorePermissionErrors: true,
         },
-        (event, path, stats) => {
+        (event, path) => {
             switch (event) {
                 case 'change':
                 case 'add':
@@ -51,6 +53,6 @@ export const clientStaticWatcher = (options: IUVPackOptions): void => {
                 default:
                     break;
             }
-        }
+        },
     );
 };

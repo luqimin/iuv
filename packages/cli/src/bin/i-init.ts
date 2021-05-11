@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
+import * as path from 'path';
+
 import chalk from 'chalk';
 import program from 'commander';
-import * as path from 'path';
 
 import install from '../utils/install';
 import { logger } from '../utils/logger';
@@ -13,7 +14,7 @@ const INIT_MODULE_ID = '@iuv/init';
 program
     .usage('[project]')
     .option('-r, --registry [registry]', '修改 npm registry')
-    .action(async (project: string, options): Promise<void> => {
+    .action(async (project: string): Promise<void> => {
         // 设置环境变量
         const projectName = typeof project === 'string' ? project : '';
         let InitClass = safelyRequire(INIT_MODULE_ID);

@@ -1,17 +1,18 @@
 import * as path from 'path';
+
+import * as importPlugin from 'babel-plugin-import';
+
 import * as babel from '@babel/core';
+import * as classPropertiesPlugin from '@babel/plugin-proposal-class-properties';
+import * as decoratorsPlugin from '@babel/plugin-proposal-decorators';
+import * as restSpreadPlugin from '@babel/plugin-proposal-object-rest-spread';
+import * as optionalChainingPlugin from '@babel/plugin-proposal-optional-chaining';
+import * as syntaxDyamicImportPlugin from '@babel/plugin-syntax-dynamic-import';
+import * as regeneratorPlugin from '@babel/plugin-transform-regenerator';
+import * as runtimePlugin from '@babel/plugin-transform-runtime';
 import * as presetsEnv from '@babel/preset-env';
 import * as presetsReact from '@babel/preset-react';
 import * as presetsTypescript from '@babel/preset-typescript';
-import * as runtimePlugin from '@babel/plugin-transform-runtime';
-import * as importPlugin from 'babel-plugin-import';
-import * as syntaxDyamicImportPlugin from '@babel/plugin-syntax-dynamic-import';
-
-import * as restSpreadPlugin from '@babel/plugin-proposal-object-rest-spread';
-import * as decoratorsPlugin from '@babel/plugin-proposal-decorators';
-import * as classPropertiesPlugin from '@babel/plugin-proposal-class-properties';
-import * as optionalChainingPlugin from '@babel/plugin-proposal-optional-chaining';
-import * as regeneratorPlugin from '@babel/plugin-transform-regenerator';
 
 import { IUVPackConfig } from '../const/config';
 
@@ -84,6 +85,7 @@ export const getBabelConfig = (context: string, isSSR: boolean, config: IUVPackC
     try {
         const LoadablePlugin = require(path.resolve(context, 'node_modules', '@loadable', 'babel-plugin'));
         plugins.unshift(LoadablePlugin.default);
+        // eslint-disable-next-line no-empty
     } catch (error) {}
 
     return { cacheDirectory: true, presets, plugins };

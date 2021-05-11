@@ -1,10 +1,11 @@
-import * as path from 'path';
 import assert from 'assert';
+import * as path from 'path';
+
 import extend from 'extend';
 
 let cwd: string = '';
-export const initEnv = (_cwd: string): void => {
-    cwd = _cwd;
+export const initEnv = (c: string): void => {
+    cwd = c;
 };
 
 export const Env = {
@@ -85,10 +86,7 @@ export const smartEnv = (smartObject: ((...args: any[]) => EnvObject) | EnvObjec
     const production = configObject.production;
     const development = configObject.development;
 
-    assert(
-        isArrayOrObject(common) && isArrayOrObject(production) && isArrayOrObject(development),
-        '配置项必须是数组或对象'
-    );
+    assert(isArrayOrObject(common) && isArrayOrObject(production) && isArrayOrObject(development), '配置项必须是数组或对象');
 
     if (Array.isArray(common)) {
         return common.concat(configObject[Env.env]);

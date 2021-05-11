@@ -2,9 +2,10 @@
  * 读取文件内容 返回json或字符串
  */
 
-import chalk from 'chalk';
 import * as fs from 'fs';
 import * as path from 'path';
+
+import chalk from 'chalk';
 
 import { prefix } from './log';
 

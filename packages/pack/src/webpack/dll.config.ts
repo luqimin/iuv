@@ -1,11 +1,11 @@
 import * as path from 'path';
+
 import webpack from 'webpack';
 
-import vendors from './vendors';
-import Optimization from './optimization';
-
-import { Env, resolve, initEnv, smartEnv } from './env';
 import { IUVPackOptions, IUVPackConfig } from '../const/config';
+import { Env, resolve, initEnv, smartEnv } from './env';
+import Optimization from './optimization';
+import vendors from './vendors';
 
 /**
  * 打包client的webpack dllPlugin内容
@@ -31,10 +31,7 @@ export default (options: IUVPackOptions, config?: IUVPackConfig): webpack.Config
         optimization: smartEnv(Optimization, config),
         plugins: [
             new webpack.DllPlugin({
-                path: path.resolve(
-                    options.clientPath!,
-                    Env.isProductuction ? 'env/manifest.json' : 'env/manifest.dev.json'
-                ),
+                path: path.resolve(options.clientPath!, Env.isProductuction ? 'env/manifest.json' : 'env/manifest.dev.json'),
                 name: '[name]',
                 context: resolve(''),
             }),

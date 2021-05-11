@@ -4,7 +4,7 @@
         "es6": true,
         "node": true
     },
-    "extends": ["airbnb-typescript", "airbnb/hooks", "plugin:prettier/recommended"],
+    "extends": ["eslint:recommended", "plugin:prettier/recommended", "plugin:import/warnings"],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "project": "tsconfig.json",

@@ -2,9 +2,10 @@
  * 获取项目根目录路径
  */
 
-import { OptionDefinition } from 'command-line-args';
 import * as fs from 'fs';
 import * as path from 'path';
+
+import { OptionDefinition } from 'command-line-args';
 
 import { iuv as iuvConfigFromPkg } from '../../package.json';
 import { configNames } from '../config';

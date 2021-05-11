@@ -3,14 +3,16 @@
  * 目前仅支持less postcss
  */
 import * as Path from 'path';
+
+import { pathExistsSync, writeFileSync, readFileSync, readdirSync, lstatSync } from 'fs-extra';
 import * as less from 'less';
 import postcss, { ProcessOptions } from 'postcss';
-import {pathExistsSync, writeFileSync, readFileSync, readdirSync, lstatSync} from 'fs-extra';
+
+import { IUVPackOptions, IUVPackConfig } from '../const/config';
+import lessTheme from '../const/lessTheme';
 import logger from '../utils/logger';
 import mkdirs from '../utils/mkdirs';
 import { Env } from '../webpack/env';
-import { IUVPackOptions, IUVPackConfig } from '../const/config';
-import lessTheme from '../const/lessTheme';
 import postcssPlugins from '../webpack/postcss';
 import { getVersion } from '../webpack/version';
 
@@ -32,6 +34,7 @@ export const cssCompiler = (options: IUVPackOptions, config: IUVPackConfig): any
         const version = Env.isDevelopment ? '.css' : `.${getVersion(config)}.css`;
         destFilePath = destFilePath.replace(Path.extname(destFilePath), version);
 
+        // eslint-disable-next-line no-undef
         const lessOption: Less.Options = {
             filename: sourceFilePath,
             modifyVars: Object.assign(lessTheme, config.lessModifyVars),
@@ -44,7 +47,7 @@ export const cssCompiler = (options: IUVPackOptions, config: IUVPackConfig): any
         const fileString = readFileSync(sourceFilePath, 'utf-8');
         // 编译less
         less.render(fileString, lessOption)
-            .then( (lessRes) => {
+            .then((lessRes) => {
                 const postOption: ProcessOptions = {
                     from: sourceFilePath,
                     to: destFilePath,
@@ -66,11 +69,10 @@ export const cssCompiler = (options: IUVPackOptions, config: IUVPackConfig): any
                 writeFileSync(destFilePath, postRes.css, 'utf8');
                 logger.info(`样式 文件${file}编译结束`);
             })
-            .catch( (err) => {
+            .catch((err) => {
                 logger.info(`样式 文件${file}编译出错`);
                 logger.error(err);
             });
-
     };
 
     const compileAll = () => {

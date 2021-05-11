@@ -1,23 +1,23 @@
-import { logger } from "./logger";
+import { logger } from './logger';
 
 export default (moduleId: string) => {
-    let _modulePath: string, _module: any;
+    let modulePath: string, moduleObj: any;
     try {
-        _modulePath = require.resolve(moduleId);
+        modulePath = require.resolve(moduleId);
 
-        if (!_modulePath) return null;
-        _module = require(_modulePath);
+        if (!modulePath) return null;
+        moduleObj = require(modulePath);
 
-        if (!_module) return _module;
+        if (!moduleObj) return moduleObj;
 
         // es module
-        if (_module.__esModule) {
-            return 'default' in _module ? _module.default : _module;
+        if (moduleObj.__esModule) {
+            return 'default' in moduleObj ? moduleObj.default : moduleObj;
         }
 
-        return _module;
+        return moduleObj;
     } catch (error) {
-        logger.error(error)
+        logger.error(error);
         return null;
     }
 };

@@ -1,7 +1,8 @@
 import webpack from 'webpack';
-import spin from '../utils/spin';
+
 import logger from '../utils/logger';
 import { isDevDquipment } from '../utils/platform';
+import spin from '../utils/spin';
 
 /**
  * 静态文件打包
@@ -27,7 +28,7 @@ export const clientCompiler = (webpackConfig: webpack.Configuration, title: stri
 
             if (!stats) {
                 logger.error('webpack stats 不存在');
-                return
+                return;
             }
 
             console.log(
@@ -38,7 +39,7 @@ export const clientCompiler = (webpackConfig: webpack.Configuration, title: stri
                         colors: isDevDquipment,
                         children: false,
                         modules: false,
-                    })
+                    }),
             );
             resolve(stats);
         });

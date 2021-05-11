@@ -5,7 +5,7 @@
   "main": "./build/index.js",
   "scripts": {
     "start": "tsc --watch --pretty",
-    "lint": "tslint -p ./",
+    "lint": "eslint . --ext .ts --fix",
     "clean": "rimraf build types",
     "prebuild": "npm run lint && npm run clean",
     "build": "tsc",
@@ -32,11 +32,11 @@
   "author": "luqimin",
   "license": "ISC",
   "devDependencies": {
+    "@types/command-line-args": "^5.0.0",
     "@types/node": "^15.0.2",
     "@typescript-eslint/eslint-plugin": "^4.23.0",
     "@typescript-eslint/parser": "^4.23.0",
     "eslint": "^7.26.0",
-    "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.4.0",
@@ -46,7 +46,6 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
-    "@types/command-line-args": "^5.0.0",
     "chalk": "^4.1.1",
     "dayjs": "^1.10.4"
   }

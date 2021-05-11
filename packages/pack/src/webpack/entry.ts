@@ -2,10 +2,12 @@
  * 获取入口文件
  */
 import * as path from 'path';
-import webpack from 'webpack';
+
 import { pathExistsSync, readdirSync, lstatSync } from 'fs-extra';
-import getName from '../utils/getEntryName';
+import webpack from 'webpack';
+
 import { IUVPackOptions } from '../const/config';
+import getName from '../utils/getEntryName';
 
 // 默认入口名
 const clientEntryNames: string[] = ['index.ts', 'index.tsx', 'entry.ts', 'entry.tsx'];

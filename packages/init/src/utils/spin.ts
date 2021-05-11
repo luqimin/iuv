@@ -12,5 +12,4 @@ export interface SpinnerIns {
     stop(): void;
 }
 
-export default (text: string): SpinnerIns =>
-    new Spinner(text, ['⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷']);
+export default (text: string): SpinnerIns => new Spinner(text, ['⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷']);

@@ -1,8 +1,10 @@
-import { BaseClass } from '@iuv/core';
 import * as fs from 'fs';
+import * as path from 'path';
+
 import * as inquirer from 'inquirer';
 import { find } from 'lodash';
-import * as path from 'path';
+
+import { BaseClass } from '@iuv/core';
 
 import { ssrDemoUrl } from './config';
 import InitProject from './download';

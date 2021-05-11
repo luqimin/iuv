@@ -3,8 +3,9 @@
  */
 
 import { Spinner } from 'clui';
-import { isDevDquipment } from './platform';
+
 import logger from './logger';
+import { isDevDquipment } from './platform';
 
 export interface SpinnerIns {
     start(): void;

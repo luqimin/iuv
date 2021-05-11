@@ -4,6 +4,7 @@
 
 import * as fs from 'fs-extra';
 import ts from 'typescript';
+
 import getConfigPath from '../typescript/getConfigFile';
 import logger, { addColor } from '../utils/logger';
 
@@ -20,11 +21,7 @@ export const tsCompiler = (context: string, configName?: string): boolean => {
     }
 
     // 从tsconfig.json中获取ts配置
-    const configParseResult = ts.parseJsonConfigFileContent(
-        fs.readJsonSync(configPath, { encoding: 'utf8' }),
-        ts.sys,
-        context
-    );
+    const configParseResult = ts.parseJsonConfigFileContent(fs.readJsonSync(configPath, { encoding: 'utf8' }), ts.sys, context);
 
     logger.info('TS 编译中...');
 
@@ -39,7 +36,7 @@ export const tsCompiler = (context: string, configName?: string): boolean => {
                 addColor(`TS Error ${diagnostic.code}`, 'gray'),
                 `${diagnostic.file.fileName} (${line + 1}:${character + 1})`,
                 ':',
-                ts.flattenDiagnosticMessageText(diagnostic.messageText, ts.sys.newLine)
+                ts.flattenDiagnosticMessageText(diagnostic.messageText, ts.sys.newLine),
             );
         } else {
             logger.info(`TS ${ts.flattenDiagnosticMessageText(diagnostic.messageText, ts.sys.newLine)}`);

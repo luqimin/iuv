@@ -1,9 +1,9 @@
-import getTsConfigPath from '../typescript/getConfigFile';
-import { IUVPackConfig, IUVPackOptions } from '../const/config';
-import { Env, resolve } from './env';
-import lessTheme from '../const/lessTheme';
 import { getBabelConfig } from '../babel';
+import { IUVPackConfig, IUVPackOptions } from '../const/config';
+import lessTheme from '../const/lessTheme';
+import getTsConfigPath from '../typescript/getConfigFile';
 import { isDevDquipment } from '../utils/platform';
+import { Env, resolve } from './env';
 
 export default (options: IUVPackOptions, config: IUVPackConfig) => {
     const common = {

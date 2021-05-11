@@ -1,12 +1,13 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import webpack from 'webpack';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import webpack from 'webpack';
+
+import { IUVPackConfig, IUVPackOptions } from '../const/config';
 import { resolve, Env, EnvObject } from './env';
 import { getVersion } from './version';
-import { IUVPackConfig, IUVPackOptions } from '../const/config';
 
 export default (options: IUVPackOptions, config: IUVPackConfig) => {
     const common: any[] = [
@@ -24,7 +25,7 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
             new webpack.DllReferencePlugin({
                 context: resolve(''),
                 manifest: require(path.resolve(options.clientPath!, manifestPath)),
-            })
+            }),
         );
     }
 
@@ -32,31 +33,27 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
     const faviconPath = path.resolve(options.clientSourcePath!, '../public/favicon.ico');
 
     const production: any[] = [
-        new HtmlWebpackPlugin(
-            {
-                minify: {
-                    removeComments: true,
-                    collapseWhitespace: true,
-                    minifyCSS: true,
-                },
-                favicon: faviconPath,
-                inject: true,
-                template: htmlPath,
+        new HtmlWebpackPlugin({
+            minify: {
+                removeComments: true,
+                collapseWhitespace: true,
+                minifyCSS: true,
             },
-        ),
+            favicon: faviconPath,
+            inject: true,
+            template: htmlPath,
+        }),
         new MiniCssExtractPlugin({
             filename: config.disableUniqueOutput ? '[name].css' : `[name].${getVersion(config)}.css`,
             chunkFilename: config.disableUniqueOutput ? '[name].iuv.css' : '[name].[chunkhash:4].css',
         }),
     ];
     const development: any[] = [
-        new HtmlWebpackPlugin(
-              {
-                favicon: faviconPath,
-                inject: true,
-                template: htmlPath,
-              },
-        ),
+        new HtmlWebpackPlugin({
+            favicon: faviconPath,
+            inject: true,
+            template: htmlPath,
+        }),
         new webpack.HotModuleReplacementPlugin(),
         new MiniCssExtractPlugin({
             filename: '[name].css',
@@ -70,7 +67,7 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
         development,
     };
 
-     // 合并用户配置
+    // 合并用户配置
     if (Array.isArray(config.webpackPlugins)) {
         configObject.common = config.webpackPlugins;
         configObject.production = [];

@@ -3,17 +3,16 @@
  */
 import webpack from 'webpack';
 
+import { IUVPackConfig, IUVPackOptions } from '../const/config';
+import DevServer from './devServer';
+import Plugins from './devServerPlugins';
 import Entry from './entry';
+import { Env, smartEnv, initEnv } from './env';
+import Module from './module';
+import Optimization from './optimization';
 import Output from './output';
 import Resolve from './resolve';
 import ResolveLoader from './resolveLoader';
-import Module from './module';
-import Plugins from './devServerPlugins';
-import Optimization from './optimization';
-import DevServer from './devServer';
-
-import { Env, smartEnv, initEnv } from './env';
-import { IUVPackConfig, IUVPackOptions } from '../const/config';
 
 /**
  * 获取webpack配置
@@ -25,7 +24,7 @@ export default (
     /**
      * iuv配置
      */
-    config?: IUVPackConfig
+    config?: IUVPackConfig,
 ): webpack.Configuration => {
     const cwd = options.context;
 

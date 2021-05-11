@@ -2,12 +2,12 @@
  * css打包监听服务
  */
 import * as Path from 'path';
-import { lstatSync } from 'fs-extra';
-import { cssCompiler } from './cssCompiler';
+
 import { IUVPackOptions, IUVPackConfig } from '../const/config';
+import { STATIC_FILES_IGNORE } from '../const/filename';
 import logger from '../utils/logger';
 import watch from '../utils/watch';
-import { STATIC_FILES_IGNORE } from '../const/filename';
+import { cssCompiler } from './cssCompiler';
 
 export const cssWatcher = (options: IUVPackOptions, config: IUVPackConfig): void => {
     const dir = Path.resolve(options.clientSourcePath!, 'style');
@@ -21,7 +21,7 @@ export const cssWatcher = (options: IUVPackOptions, config: IUVPackConfig): void
             ignoreInitial: false,
             ignorePermissionErrors: true,
         },
-        (event, path, stats) => {
+        (event) => {
             switch (event) {
                 case 'change':
                 case 'add':
@@ -35,6 +35,6 @@ export const cssWatcher = (options: IUVPackOptions, config: IUVPackConfig): void
                 default:
                     break;
             }
-        }
+        },
     );
 };

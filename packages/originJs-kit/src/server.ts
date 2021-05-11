@@ -1,11 +1,13 @@
 /**
  * node服务端任务
  */
-import { BaseClass } from '@iuv/core';
+import * as path from 'path';
+
 import extend from 'extend';
 import { debounce } from 'lodash';
 import * as nodemon from 'nodemon';
-import * as path from 'path';
+
+import { BaseClass } from '@iuv/core';
 
 class NodemonServer extends BaseClass {
     protected running() {
@@ -36,7 +38,7 @@ class NodemonServer extends BaseClass {
                 },
                 ext: 'js,json,ejs',
             },
-            this.config && this.config.nodemon
+            this.config && this.config.nodemon,
         );
 
         // 启动nodemon

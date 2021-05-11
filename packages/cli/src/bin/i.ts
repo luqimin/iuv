@@ -2,9 +2,9 @@
 
 import chalk from 'chalk';
 import { Command } from 'commander';
-import { logger } from '../utils/logger';
 
 import ExecuteClass from '../lib/exec';
+import { logger } from '../utils/logger';
 import { localVersion } from '../utils/version';
 
 const program = new Command();
@@ -23,7 +23,7 @@ program
     .alias('run')
     .description('执行iuv配置文件内相关命令')
     .allowUnknownOption()
-    .action((cmd: string, options) => {
+    .action((cmd: string) => {
         new ExecuteClass({ root: program.opts().root, cmd }).start();
     });
 
@@ -46,6 +46,7 @@ program.configureOutput({
 (function parseProcess() {
     try {
         program.parse(process.argv);
+        // eslint-disable-next-line no-empty
     } catch (error) {}
     const args = program.args;
     if (args.length < 1) {

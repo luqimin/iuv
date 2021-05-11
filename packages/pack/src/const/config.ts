@@ -1,5 +1,5 @@
-import * as WebpackDevServer from 'webpack-dev-server';
 import { RuleSetRule } from 'webpack';
+import * as WebpackDevServer from 'webpack-dev-server';
 
 /**
  * pack示例参数接口

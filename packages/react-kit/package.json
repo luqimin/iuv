@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "tsc --watch --pretty",
-    "lint": "tslint -p ./",
+    "lint": "eslint . --ext .ts --fix",
     "clean": "rimraf build types",
     "prebuild": "npm run lint && npm run clean",
     "build": "tsc",
@@ -47,7 +47,6 @@
     "@typescript-eslint/eslint-plugin": "^4.23.0",
     "@typescript-eslint/parser": "^4.23.0",
     "eslint": "^7.26.0",
-    "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.4.0",

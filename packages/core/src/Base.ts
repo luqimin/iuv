@@ -105,7 +105,7 @@ export abstract class BaseClass<P = undefined> {
      */
     public async start(): Promise<any> {
         // 记录任务开始时间
-        const _startTime: number = new Date().getTime();
+        const startTime: number = new Date().getTime();
 
         // 初始化相关配置后增加一个钩子，返回false则任务不执行
         if (this.didInit && (await this.didInit()) === false) {
@@ -122,9 +122,9 @@ export abstract class BaseClass<P = undefined> {
         this.runtime.running = this.running && (await this.running());
 
         // 记录任务结束时间
-        const _endTime: number = new Date().getTime();
+        const endTime: number = new Date().getTime();
         // 计算任务耗时
-        const spendTime = _endTime - _startTime;
+        const spendTime = endTime - startTime;
         this.runtime.duration = spendTime;
 
         // didRun...

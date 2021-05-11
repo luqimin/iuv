@@ -2,17 +2,17 @@
  * webpack dllPlugin配置
  */
 import * as path from 'path';
+
 import webpack from 'webpack';
 import nodeExternals from 'webpack-node-externals';
 import WebpackBar from 'webpackbar';
 
+import { IUVPackConfig, IUVPackOptions } from '../const/config';
 import Entry from './entry';
-import Module from './ssrModule';
+import { Env, initEnv, smartEnv } from './env';
 import Resolve from './resolve';
 import ResolveLoader from './resolveLoader';
-
-import { Env, initEnv, smartEnv } from './env';
-import { IUVPackConfig, IUVPackOptions } from '../const/config';
+import Module from './ssrModule';
 
 /**
  * 打包服务端ssr文件
@@ -36,11 +36,13 @@ export default (options: IUVPackOptions, config?: IUVPackConfig): webpack.Config
             libraryExport: 'default',
         },
         module: smartEnv(Module, options, config || {}),
-        plugins: [new WebpackBar({
-            name: '[iuv] ssr',
-            color: 'yellow',
-            basic: true,
-        })],
+        plugins: [
+            new WebpackBar({
+                name: '[iuv] ssr',
+                color: 'yellow',
+                basic: true,
+            }),
+        ],
         resolve: smartEnv(Resolve, options),
         resolveLoader: smartEnv(ResolveLoader),
         devtool: false,

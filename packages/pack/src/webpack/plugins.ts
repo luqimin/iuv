@@ -1,15 +1,16 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import webpack from 'webpack';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import webpack from 'webpack';
 import WebpackBar from 'webpackbar';
 
-import { resolve, Env, EnvObject } from './env';
-import getTsConfigPath from '../typescript/getConfigFile';
-import { getVersion } from './version';
 import { IUVPackConfig, IUVPackOptions } from '../const/config';
+import getTsConfigPath from '../typescript/getConfigFile';
 import logger from '../utils/logger';
+import { resolve, Env, EnvObject } from './env';
+import { getVersion } from './version';
 
 export default (options: IUVPackOptions, config: IUVPackConfig) => {
     const common: any[] = [
@@ -24,9 +25,12 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
         // 添加Loadable Components插件
         try {
             const LoadablePlugin = require(resolve('node_modules', '@loadable', 'webpack-plugin'));
-            common.push(new LoadablePlugin({
-                filename: '../../server/ssr/loadable-stats.json',
-            }));
+            common.push(
+                new LoadablePlugin({
+                    filename: '../../server/ssr/loadable-stats.json',
+                }),
+            );
+            // eslint-disable-next-line no-empty
         } catch (error) {}
     }
 
@@ -37,7 +41,7 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
             new webpack.DllReferencePlugin({
                 context: resolve(''),
                 manifest: require(path.resolve(options.clientPath!, manifestPath)),
-            })
+            }),
         );
     }
 

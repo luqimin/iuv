@@ -1,8 +1,9 @@
 /**
  * egg-ts-helper
  */
-import { BaseClass } from '@iuv/core';
 import spawn from 'cross-spawn';
+
+import { BaseClass } from '@iuv/core';
 
 class ETS extends BaseClass<any> {
     protected async running() {

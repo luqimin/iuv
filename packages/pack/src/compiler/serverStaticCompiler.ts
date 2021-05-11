@@ -2,9 +2,10 @@
  * 服务端静态文件(ejs等)打包
  */
 import * as Path from 'path';
+
+import anymatch from 'anymatch';
 import * as fs from 'fs-extra';
 import klawSync from 'klaw-sync';
-import anymatch from 'anymatch';
 
 import { IUVPackOptions } from '../const/config';
 import { STATIC_FILES_IGNORE } from '../const/filename';
@@ -14,7 +15,7 @@ export const serverStaticCompiler = (options: IUVPackOptions): Promise<void[]> =
     const dest = options.serverPath!;
     const files = klawSync(dir, {
         nodir: true,
-        filter: ({ path, stats }) => {
+        filter: ({ path }) => {
             const basename = Path.basename(path);
             const extname = Path.extname(path);
 

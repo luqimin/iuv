@@ -4,9 +4,10 @@
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 
-import { Env } from './env';
 import { IUVPackConfig } from '../const/config';
+import { Env } from './env';
 
+// eslint-disable-next-line no-unused-vars
 const getPlugins = (config: IUVPackConfig) => {
     const postcssPlugins: any[] = [
         autoprefixer({
@@ -19,7 +20,7 @@ const getPlugins = (config: IUVPackConfig) => {
         postcssPlugins.push(
             cssnano({
                 preset: ['default', { cssDeclarationSorter: false }],
-            })
+            }),
         );
     }
     return postcssPlugins;

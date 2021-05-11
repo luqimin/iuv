@@ -3,20 +3,18 @@
  */
 import webpack from 'webpack';
 
+import { IUVPackConfig, IUVPackOptions } from '../const/config';
+import getDllConfig from './dll.config';
 import Entry from './entry';
+import { Env, smartEnv, initEnv } from './env';
+import Module from './module';
+import Optimization from './optimization';
 import Output from './output';
+import Plugins from './plugins';
 import Resolve from './resolve';
 import ResolveLoader from './resolveLoader';
-import Module from './module';
-import Plugins from './plugins';
-import Optimization from './optimization';
-
-import getDllConfig from './dll.config';
 import getSSRConfig from './ssr.config';
 import getWebpackDevServerConfig from './webpackDevServer.config';
-
-import { Env, smartEnv, initEnv } from './env';
-import { IUVPackConfig, IUVPackOptions } from '../const/config';
 
 /**
  * 获取webpack配置
@@ -28,7 +26,7 @@ export const getWebpackConfig = (
     /**
      * iuv配置
      */
-    config?: IUVPackConfig
+    config?: IUVPackConfig,
 ): webpack.Configuration => {
     const cwd = options.context;
 

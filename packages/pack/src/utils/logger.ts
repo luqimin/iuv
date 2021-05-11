@@ -2,8 +2,9 @@
  * repl日志封装
  */
 import chalk from 'chalk';
-import getTime from './time';
+
 import { isDevDquipment } from './platform';
+import getTime from './time';
 
 export const addColor = (text: string, color: string) => {
     if (isDevDquipment) {

@@ -3,6 +3,7 @@
  */
 
 import webpack from 'webpack';
+
 import logger from '../utils/logger';
 
 export const clientWatcher = (webpackConfig: webpack.Configuration, title: string): Promise<void> => {
@@ -15,7 +16,7 @@ export const clientWatcher = (webpackConfig: webpack.Configuration, title: strin
     let compiledTimes: number = 0;
 
     return new Promise((resolve) => {
-        compiler.watch({aggregateTimeout: 1000}, (err, stats) => {
+        compiler.watch({ aggregateTimeout: 1000 }, (err, stats) => {
             if (compiledTimes === 0) {
                 resolve();
             }
@@ -32,13 +33,13 @@ export const clientWatcher = (webpackConfig: webpack.Configuration, title: strin
 
             if (!stats) {
                 logger.error('webpack stats 不存在');
-                return
+                return;
             }
 
             const info = stats.toJson('minimal');
 
             if (stats.hasErrors()) {
-                (info.errors || []).forEach(statErr=>logger.log(statErr.message))
+                (info.errors || []).forEach((statErr) => logger.log(statErr.message));
                 return;
             }
         });

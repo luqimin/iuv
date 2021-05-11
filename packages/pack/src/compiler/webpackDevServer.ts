@@ -1,14 +1,18 @@
 import webpack from 'webpack';
-import spin from '../utils/spin';
+import WebpackDevServer from 'webpack-dev-server';
+
 import logger from '../utils/logger';
 import { isDevDquipment } from '../utils/platform';
-import WebpackDevServer from 'webpack-dev-server';
+import spin from '../utils/spin';
 
 /**
  * 启动webapckDevServer
  */
-export const webpackDevServer =
-(webpackConfig: webpack.Configuration, type: 'build' | 'server', title?: string): Promise<webpack.Stats> | void => {
+export const webpackDevServer = (
+    webpackConfig: webpack.Configuration,
+    type: 'build' | 'server',
+    title?: string,
+): Promise<webpack.Stats> | void => {
     const buildSpin = type === 'server' ? spin('启动webpackDevServer中...') : spin(`编译「${title}」js文件中...`);
     buildSpin.start();
     if (type === 'build') {
@@ -27,7 +31,7 @@ export const webpackDevServer =
                 }
                 if (!stats) {
                     logger.error('webpack stats 不存在');
-                    return
+                    return;
                 }
                 console.log(
                     `webpack打包「${title}」结果\n` +
@@ -37,7 +41,7 @@ export const webpackDevServer =
                             colors: isDevDquipment,
                             children: false,
                             modules: false,
-                        })
+                        }),
                 );
                 resolve(stats);
             });
