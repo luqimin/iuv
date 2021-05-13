@@ -107,7 +107,7 @@ export abstract class BaseClass<P = undefined> {
         // 记录任务开始时间
         const startTime: number = new Date().getTime();
 
-        // 初始化相关配置后增加一个钩子，返回false则任务不执行
+        // 初始化相关配置后增加一个钩子，返回false则任务中断
         if (this.didInit && (await this.didInit()) === false) {
             process.exit(0);
         }
