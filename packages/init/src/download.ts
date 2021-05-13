@@ -5,7 +5,7 @@ import * as path from 'path';
 import * as util from 'util';
 
 import chalk from 'chalk';
-import * as download from 'download-git-repo';
+import download from 'download-git-repo';
 
 import install from './utils/install';
 import { logger } from './utils/logger';
