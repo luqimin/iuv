@@ -1,6 +1,6 @@
 {
   "name": "@iuv/pack",
-  "version": "1.5.1-alpha.0",
+  "version": "2.0.0",
   "description": "pack for iuv",
   "main": "./build/index.js",
   "scripts": {
