@@ -37,8 +37,9 @@ export const getBabelConfig = (context: string, isSSR: boolean, config: IUVPackC
                     browsers: config.browsers,
                 },
                 modules: false,
-                useBuiltIns: 'entry',
+                useBuiltIns: 'usage',
                 corejs: '3',
+                shippedProposals: true,
             },
         ],
         presetsReact,
@@ -55,6 +56,7 @@ export const getBabelConfig = (context: string, isSSR: boolean, config: IUVPackC
             runtimePlugin,
             {
                 absoluteRuntime: babelRuntimePath,
+                corejs: '3',
             },
         ],
         [
