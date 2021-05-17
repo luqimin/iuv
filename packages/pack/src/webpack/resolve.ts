@@ -23,6 +23,8 @@ export default (options: IUVPackOptions) => {
         alias[`@${name}`] = path.resolve(clientSrc, name);
     }
 
+    alias['@'] = path.resolve(clientSrc);
+
     return {
         common: {
             alias,
