@@ -1,6 +1,6 @@
 {
   "name": "@iuv/react-kit",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Tools set for iuv simple react projects",
   "main": "index.js",
   "scripts": {
@@ -33,7 +33,7 @@
   "license": "ISC",
   "dependencies": {
     "@iuv/core": "^2.0.0",
-    "@iuv/pack": "^2.0.0",
+    "@iuv/pack": "^2.0.1",
     "cross-spawn": "^6.0.5",
     "extend": "^3.0.2",
     "lodash": "^4.17.11",
