@@ -1,8 +1,11 @@
+/* eslint-disable no-fallthrough */
 import * as fs from 'fs';
+import http from 'http';
 
 import { BaseClass } from '@iuv/core';
 
 import Builder from './build';
+import mockServer from './server';
 import creatPack from './utils/packFactory';
 
 class DevServer extends BaseClass<any> {
@@ -14,6 +17,38 @@ class DevServer extends BaseClass<any> {
         runtime.rootPath && (process.env.IUV_PATH = runtime.rootPath);
         config.clientPath && (process.env.IUV_CLIENT_PATH = config.clientPath);
         config.serverPath && (process.env.IUV_SERVER_PATH = config.serverPath);
+    }
+
+    private runMock() {
+        const server = mockServer(this.config.clientPath);
+
+        const port = '9527';
+
+        const onError = (error: any) => {
+            if (error.syscall !== 'listen') {
+                throw error;
+            }
+            switch (error.code) {
+                case 'EACCES': {
+                    this.logger.error(`监听 ${port} 端口需要 root 权限, 尝试 sudo 重新运行`);
+                    process.exit(1);
+                }
+                case 'EADDRINUSE': {
+                    this.logger.error(`${port} 端口被占用`);
+                    process.exit(2);
+                }
+                default: {
+                    throw error;
+                }
+            }
+        };
+        const onListening = () => {
+            this.logger.success(`本地mock服务开始运行, 监听端口: ${port}`);
+        };
+
+        server.set('port', port);
+
+        http.createServer(server).listen(port).on('error', onError).on('listening', onListening);
     }
 
     protected async running() {
@@ -38,6 +73,8 @@ class DevServer extends BaseClass<any> {
         }
 
         pack.webpackDevServer();
+
+        this.runMock();
     }
 }
 

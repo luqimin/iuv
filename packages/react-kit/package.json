@@ -34,15 +34,10 @@
   "dependencies": {
     "@iuv/core": "^2.0.0",
     "@iuv/pack": "^2.0.1",
-    "cross-spawn": "^6.0.5",
-    "extend": "^3.0.2",
-    "lodash": "^4.17.11",
-    "nodemon": "^1.19.0"
+    "express": "^4.17.1"
   },
   "devDependencies": {
-    "@types/cross-spawn": "^6.0.0",
-    "@types/extend": "^3.0.1",
-    "@types/lodash": "^4.14.132",
+    "@types/express": "^4.17.11",
     "@types/webpack": "^4.4.32",
     "@typescript-eslint/eslint-plugin": "^4.23.0",
     "@typescript-eslint/parser": "^4.23.0",
