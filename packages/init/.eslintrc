@@ -7,7 +7,7 @@
     "extends": ["eslint:recommended", "plugin:prettier/recommended", "plugin:import/warnings"],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "project": "tsconfig.json",
+        "project": "./src/**/tsconfig.json",
         "sourceType": "module"
     },
     "plugins": ["@typescript-eslint"],
