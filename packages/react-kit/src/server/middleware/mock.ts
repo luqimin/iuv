@@ -37,7 +37,8 @@ const mockMiddleware = (rootPath: string) => {
 
         if (fs.existsSync(dataPath)) {
             res.writeHead(200, {
-                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Origin': req.protocol + '://' + req.hostname,
+                'Access-Control-Allow-Headers': '*',
                 'Content-Type': 'application/json;charset=utf-8',
                 'Cache-Control': 'max-age=0',
                 Server: 'iuv',
