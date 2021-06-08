@@ -1,6 +1,6 @@
 {
   "name": "@iuv/react-kit",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Tools set for iuv simple react projects",
   "main": "index.js",
   "scripts": {
