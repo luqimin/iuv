@@ -3,14 +3,34 @@ import path from 'path';
 import express from 'express';
 
 import mock from './middleware/mock';
+import createProxyMiddleware, { Options } from './middleware/proxy';
 
-const initServer = (rootPath: string) => {
+interface ProxyConfig {
+    [key: string]: Options;
+}
+
+const initServer = (rootPath: string, mockProxy: ProxyConfig) => {
     const app = express();
 
     const mockPath = path.resolve(rootPath, './mock');
 
     app.set('view cache', false);
 
+    // 代理
+    if (mockProxy) {
+        Object.keys(mockProxy).forEach((key) => {
+            const config = {
+                ...mockProxy[key],
+                onProxyRes: (proxyRes: any) => {
+                    proxyRes.headers['access-control-allow-headers'] =
+                        proxyRes.headers['access-control-allow-headers'] + `,${mockProxy[key].headers}`;
+                },
+            };
+            app.use(key, createProxyMiddleware(config));
+        });
+    }
+
+    // mock服务
     app.use('/mock', mock(mockPath));
 
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {

@@ -20,7 +20,7 @@ class DevServer extends BaseClass<any> {
     }
 
     private runMock() {
-        const server = mockServer(this.config.clientPath);
+        const server = mockServer(this.config.clientPath, this.config.mockProxy);
 
         const port = '9527';
 
