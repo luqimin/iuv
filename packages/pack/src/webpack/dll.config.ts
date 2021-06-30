@@ -15,7 +15,13 @@ export default (options: IUVPackOptions, config?: IUVPackConfig): Configuration 
     const cwd = options.context;
     initEnv(cwd);
 
-    const outputFilename = config && `[name]${config.dllOutputSuffix || '_[fullhash:4]'}`;
+    let outputFilename = '[name]_[fullhash:4]',
+        libraryName = '[name]_[fullhash:4]';
+    if (config && config.dllOutputSuffix) {
+        outputFilename = `[name]${config.dllOutputSuffix}`;
+        // 避免dllOutputSuffix包含非法字符
+        libraryName = `[name]${config.dllOutputSuffix.replace(/\W/g, '_')}`;
+    }
 
     // 内置配置
     let builtInConfig: Configuration = {
@@ -27,13 +33,13 @@ export default (options: IUVPackOptions, config?: IUVPackConfig): Configuration 
         output: {
             path: path.resolve(options.clientPath!, 'dist'),
             filename: Env.isProductuction ? outputFilename + '.js' : '[name].dev.js',
-            library: Env.isProductuction ? outputFilename : '[name]',
+            library: Env.isProductuction ? libraryName : '[name]',
         },
         optimization: smartEnv(Optimization, config),
         plugins: [
             new webpack.DllPlugin({
                 path: path.resolve(options.clientPath!, Env.isProductuction ? 'env/manifest.json' : 'env/manifest.dev.json'),
-                name: Env.isProductuction ? outputFilename : '[name]',
+                name: Env.isProductuction ? libraryName : '[name]',
                 context: resolve(''),
             }),
         ],
