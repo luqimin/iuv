@@ -1,7 +1,8 @@
 /**
  * 获取webpack配置
  */
-import webpack from 'webpack';
+import { Configuration } from 'webpack';
+import * as mergeFuncs from 'webpack-merge';
 
 import { IUVPackConfig, IUVPackOptions } from '../const/config';
 import DevServer from './devServer';
@@ -25,13 +26,13 @@ export default (
      * iuv配置
      */
     config?: IUVPackConfig,
-): webpack.Configuration => {
+): Configuration => {
     const cwd = options.context;
-
     // 初始化webpack环境
     initEnv(cwd);
 
-    return {
+    // 内置配置
+    let builtInConfig: Configuration = {
         // 设置webpack上下文
         context: cwd,
         name: 'client',
@@ -46,4 +47,11 @@ export default (
         devtool: Env.isProductuction ? false : 'eval-cheap-module-source-map',
         devServer: smartEnv(DevServer, options, config),
     };
+    // 合并用户配置
+    if (config && typeof config.devServerWebpack === 'function') {
+        const userConfig = config.devServerWebpack(mergeFuncs, builtInConfig);
+        userConfig && (builtInConfig = userConfig);
+    }
+
+    return builtInConfig;
 };

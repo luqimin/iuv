@@ -76,9 +76,9 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
                 type: 'asset',
                 parser: {
                     dataUrlCondition: {
-                        maxSize: 4 * 1024 // 4kb
-                    }
-                }
+                        maxSize: 4 * 1024, // 4kb
+                    },
+                },
             },
             {
                 test: /\.(js|jsx)$/i,

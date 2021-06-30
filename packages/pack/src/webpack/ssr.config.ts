@@ -3,7 +3,8 @@
  */
 import * as path from 'path';
 
-import webpack from 'webpack';
+import { Configuration } from 'webpack';
+import * as mergeFuncs from 'webpack-merge';
 import nodeExternals from 'webpack-node-externals';
 import WebpackBar from 'webpackbar';
 
@@ -17,12 +18,12 @@ import Module from './ssrModule';
 /**
  * 打包服务端ssr文件
  */
-export default (options: IUVPackOptions, config?: IUVPackConfig): webpack.Configuration => {
+export default (options: IUVPackOptions, config?: IUVPackConfig): Configuration => {
     const cwd = options.context;
-
     initEnv(cwd);
 
-    return {
+    // 内置配置
+    let builtInConfig: Configuration = {
         context: cwd,
         name: 'ssr',
         mode: Env.isProductuction ? 'production' : 'development',
@@ -48,4 +49,11 @@ export default (options: IUVPackOptions, config?: IUVPackConfig): webpack.Config
         devtool: false,
         externals: [nodeExternals()],
     };
+    // 合并用户配置
+    if (config && typeof config.ssrWebpack === 'function') {
+        const userConfig = config.ssrWebpack(mergeFuncs, builtInConfig);
+        userConfig && (builtInConfig = userConfig);
+    }
+
+    return builtInConfig;
 };

@@ -1,6 +1,7 @@
 import * as path from 'path';
 
-import webpack from 'webpack';
+import webpack, { Configuration } from 'webpack';
+import * as mergeFuncs from 'webpack-merge';
 
 import { IUVPackOptions, IUVPackConfig } from '../const/config';
 import { Env, resolve, initEnv, smartEnv } from './env';
@@ -10,14 +11,14 @@ import vendors from './vendors';
 /**
  * 打包client的webpack dllPlugin内容
  */
-export default (options: IUVPackOptions, config?: IUVPackConfig): webpack.Configuration => {
+export default (options: IUVPackOptions, config?: IUVPackConfig): Configuration => {
     const cwd = options.context;
-
     initEnv(cwd);
 
     const outputFilename = config && `[name]${config.dllOutputSuffix || '_[fullhash:4]'}`;
 
-    return {
+    // 内置配置
+    let builtInConfig: Configuration = {
         context: cwd,
         name: 'clientDll',
         mode: Env.isProductuction ? 'production' : 'development',
@@ -37,4 +38,11 @@ export default (options: IUVPackOptions, config?: IUVPackConfig): webpack.Config
             }),
         ],
     };
+    // 合并用户配置
+    if (config && typeof config.dllWebpack === 'function') {
+        const userConfig = config.dllWebpack(mergeFuncs, builtInConfig);
+        userConfig && (builtInConfig = userConfig);
+    }
+
+    return builtInConfig;
 };

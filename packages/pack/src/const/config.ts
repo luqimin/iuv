@@ -1,5 +1,6 @@
-import { RuleSetRule } from 'webpack';
+import { RuleSetRule, Configuration } from 'webpack';
 import * as WebpackDevServer from 'webpack-dev-server';
+import * as mergeFuncs from 'webpack-merge';
 
 /**
  * pack示例参数接口
@@ -94,6 +95,14 @@ export interface IUVPackConfig {
      * webpack loaders
      */
     webpackLoaders?: RuleSetRule[] | ((rules: RuleSetRule[]) => RuleSetRule[]);
+
+    /**
+     * webpack配置
+     */
+    webpack?: (funcs: typeof mergeFuncs, config: Configuration) => Configuration;
+    dllWebpack?: (funcs: typeof mergeFuncs, config: Configuration) => Configuration;
+    ssrWebpack?: (funcs: typeof mergeFuncs, config: Configuration) => Configuration;
+    devServerWebpack?: (funcs: typeof mergeFuncs, config: Configuration) => Configuration;
 }
 
 interface SSR {
