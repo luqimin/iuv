@@ -44,8 +44,8 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
             template: htmlPath,
         }),
         new MiniCssExtractPlugin({
-            filename: config.disableUniqueOutput ? '[name].css' : `[name].${getVersion(config)}.css`,
-            chunkFilename: config.disableUniqueOutput ? '[name].iuv.css' : '[name].[chunkhash:4].css',
+            filename: `[name].${getVersion(config)}.css`,
+            chunkFilename: '[name].[chunkhash:4].css',
         }),
     ];
     const development: any[] = [

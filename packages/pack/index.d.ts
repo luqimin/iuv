@@ -14,7 +14,6 @@ declare module '@babel/preset-react';
 declare module '@babel/preset-typescript';
 declare module '@babel/runtime';
 
-declare module 'uglifyjs-webpack-plugin';
 declare module 'mini-css-extract-plugin';
 declare module 'webpack-node-externals';
 

@@ -11,8 +11,8 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
             assetModuleFilename: 'files/[hash][ext][query]',
         },
         production: {
-            filename: config.disableUniqueOutput ? '[name].js' : `[name].${getVersion(config)}.js`,
-            chunkFilename: config.disableUniqueOutput ? '[name].iuv.js' : '[name].[chunkhash:4].js',
+            filename: `[name].${getVersion(config)}.js`,
+            chunkFilename: '[name].[chunkhash:4].js',
             publicPath: config.publicPath || '/dist/',
         },
         development: {

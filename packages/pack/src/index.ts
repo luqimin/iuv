@@ -13,6 +13,7 @@ import { tsCompiler } from './compiler/tsCompiler';
 import { tsWatcher } from './compiler/tsWatcher';
 import { webpackDevServer } from './compiler/webpackDevServer';
 import { DEFAULT_OPTIONS, DEFAULT_PACK_CONFIG, IUVPackOptions, IUVPackConfig } from './const/config';
+import { isSupportStupidBrowsers } from './utils/browser';
 import { getWebpackConfig, getDllCompilerConfig, getSSRCompilerConfig, getWebpackDevServerCompilerConfig } from './webpack';
 
 export default class IUVPack {
@@ -38,6 +39,8 @@ export default class IUVPack {
         // 将browsers配置写入环境变量
         if (this.config && this.config.browsers) {
             process.env.BROWSERSLIST = this.config.browsers.join(',');
+            // 自动计算legacySupport
+            this.config.legacySupport = isSupportStupidBrowsers(this.config.browsers);
         }
 
         this.context = this.options.context;

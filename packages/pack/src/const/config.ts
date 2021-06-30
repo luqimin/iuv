@@ -56,14 +56,9 @@ export interface IUVPackConfig {
     browsers?: string[];
 
     /**
-     * 生成es6代码
+     * 是否兼容老旧浏览器, 默认会通过browsers计算获取（判断是不是支持const）
      */
-    newEra?: boolean;
-
-    /**
-     * 是否创建唯一的输出文件名
-     */
-    disableUniqueOutput?: boolean;
+    legacySupport?: boolean;
 
     /**
      * webpack dllPlugin vendors

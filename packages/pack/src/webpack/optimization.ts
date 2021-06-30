@@ -1,5 +1,4 @@
 import TerserPlugin from 'terser-webpack-plugin';
-import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 
 import { IUVPackConfig } from '../const/config';
 
@@ -19,21 +18,14 @@ export default (config: IUVPackConfig) => {
         },
         production: {
             minimizer: [
-                config.newEra
-                    ? new TerserPlugin({
-                          terserOptions: {
-                              output: {
-                                  comments: /^!.+iuv.+/,
-                              },
-                          },
-                      })
-                    : new UglifyJsPlugin({
-                          uglifyOptions: {
-                              output: {
-                                  comments: /^!.+iuv.+/,
-                              },
-                          },
-                      }),
+                new TerserPlugin({
+                    terserOptions: {
+                        ecma: config.legacySupport ? 5 : 2015,
+                        output: {
+                            comments: /^!.+iuv.+/,
+                        },
+                    },
+                }),
             ],
         },
         development: {},

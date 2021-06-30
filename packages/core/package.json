@@ -23,7 +23,7 @@
     "access": "public"
   },
   "engines": {
-    "node": ">= 8.0.0"
+    "node": ">= 12.13.0"
   },
   "keywords": [
     "iuv",
