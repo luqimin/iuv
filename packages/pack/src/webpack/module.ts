@@ -73,8 +73,12 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
             },
             {
                 test: /\.(png|jpg|gif|jpeg|mp4|mp3|wma|svg|eot|ttf|woff|woff2)$/,
-                type: 'asset/resource',
-                // use: ['file-loader?limit=1000&name=files/[md5:hash:base64:10].[ext]'],
+                type: 'asset',
+                parser: {
+                    dataUrlCondition: {
+                        maxSize: 4 * 1024 // 4kb
+                    }
+                }
             },
             {
                 test: /\.(js|jsx)$/i,

@@ -15,7 +15,7 @@ export default (options: IUVPackOptions, config?: IUVPackConfig): webpack.Config
 
     initEnv(cwd);
 
-    const outputFilename = config && config.dllOutputSuffix ? `[name]${config.dllOutputSuffix}.js` : '[name].js';
+    const outputFilename = config && `[name]${config.dllOutputSuffix || '_[fullhash:4]'}`;
 
     return {
         context: cwd,
@@ -25,14 +25,14 @@ export default (options: IUVPackOptions, config?: IUVPackConfig): webpack.Config
         entry: { vendor: smartEnv(vendors, config) },
         output: {
             path: path.resolve(options.clientPath!, 'dist'),
-            filename: Env.isProductuction ? outputFilename : '[name].dev.js',
-            library: '[name]',
+            filename: Env.isProductuction ? outputFilename + '.js' : '[name].dev.js',
+            library: Env.isProductuction ? outputFilename : '[name]',
         },
         optimization: smartEnv(Optimization, config),
         plugins: [
             new webpack.DllPlugin({
                 path: path.resolve(options.clientPath!, Env.isProductuction ? 'env/manifest.json' : 'env/manifest.dev.json'),
-                name: '[name]',
+                name: Env.isProductuction ? outputFilename : '[name]',
                 context: resolve(''),
             }),
         ],
