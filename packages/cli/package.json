@@ -1,6 +1,6 @@
 {
   "name": "@iuv/cli",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "",
   "main": "./build/bin/i.js",
   "bin": {
@@ -49,7 +49,7 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
-    "@iuv/core": "^2.0.2",
+    "@iuv/core": "^2.0.3",
     "chalk": "^4.1.1",
     "clui": "^0.3.6",
     "command-line-args": "^5.1.1",
