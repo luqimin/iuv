@@ -11,7 +11,7 @@ import { serverStaticCompiler } from './compiler/serverStaticCompiler';
 import { serverStaticWatcher } from './compiler/serverStaticWatcher';
 import { tsCompiler } from './compiler/tsCompiler';
 import { tsWatcher } from './compiler/tsWatcher';
-import { webpackDevServer } from './compiler/webpackDevServer';
+import { webpackCsr } from './compiler/webpackCsr';
 import { DEFAULT_OPTIONS, DEFAULT_PACK_CONFIG, IUVPackOptions, IUVPackConfig } from './const/config';
 import { isSupportStupidBrowsers } from './utils/browser';
 import { getWebpackConfig, getDllCompilerConfig, getSSRCompilerConfig, getWebpackDevServerCompilerConfig } from './webpack';
@@ -49,17 +49,19 @@ export default class IUVPack {
     /**
      * 启动webpackDevServer
      */
-    public webpackDevServer(): void {
+    public runCsrDevServer(): void {
         const webpackConfig: webpack.Configuration = getWebpackDevServerCompilerConfig(this.options, this.config);
-        webpackDevServer(webpackConfig, 'server');
+        webpackCsr(webpackConfig, 'server');
     }
 
     /**
-     * 打包webpackDevServer src
+     * 打包webpackDevServer类型项目
      */
-    public compileWebpackDevServerSrc(): Promise<webpack.Stats> {
+    public compileCsr(): Promise<webpack.Stats> {
         const webpackConfig: webpack.Configuration = getWebpackDevServerCompilerConfig(this.options, this.config);
-        return webpackDevServer(webpackConfig, 'build', 'src') as Promise<any>;
+        const pathArr = this.options.clientSourcePath?.split('/');
+        const name = Array.isArray(pathArr) ? pathArr[pathArr?.length - 1] : 'clent';
+        return webpackCsr(webpackConfig, 'build', `client ${name}`) as Promise<any>;
     }
 
     /**

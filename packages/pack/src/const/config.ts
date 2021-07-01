@@ -102,7 +102,6 @@ export interface IUVPackConfig {
     webpack?: (funcs: typeof mergeFuncs, config: Configuration) => Configuration;
     dllWebpack?: (funcs: typeof mergeFuncs, config: Configuration) => Configuration;
     ssrWebpack?: (funcs: typeof mergeFuncs, config: Configuration) => Configuration;
-    devServerWebpack?: (funcs: typeof mergeFuncs, config: Configuration) => Configuration;
 }
 
 interface SSR {

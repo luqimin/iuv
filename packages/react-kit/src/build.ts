@@ -27,7 +27,7 @@ class Builder extends BaseClass<Params> {
             return;
         }
 
-        await pack.compileWebpackDevServerSrc();
+        await pack.compileCsr();
     }
 }
 

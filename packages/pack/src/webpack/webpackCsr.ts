@@ -1,5 +1,5 @@
 /**
- * 获取webpack配置
+ * 静态类型项目webpack配置，内置deServer, webpackHtmlPlugin
  */
 import { Configuration } from 'webpack';
 import * as mergeFuncs from 'webpack-merge';
@@ -36,6 +36,7 @@ export default (
         // 设置webpack上下文
         context: cwd,
         name: 'client',
+        // target: 'web',
         mode: Env.isProductuction ? 'production' : 'development',
         entry: Entry(options),
         output: smartEnv(Output, options, config),
@@ -48,8 +49,8 @@ export default (
         devServer: smartEnv(DevServer, options, config),
     };
     // 合并用户配置
-    if (config && typeof config.devServerWebpack === 'function') {
-        const userConfig = config.devServerWebpack(mergeFuncs, builtInConfig);
+    if (config && typeof config.webpack === 'function') {
+        const userConfig = config.webpack(mergeFuncs, builtInConfig);
         userConfig && (builtInConfig = userConfig);
     }
 

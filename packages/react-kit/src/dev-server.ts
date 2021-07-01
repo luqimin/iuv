@@ -72,7 +72,7 @@ class DevServer extends BaseClass<any> {
             await new Builder({ dllOnly: true }).start();
         }
 
-        pack.webpackDevServer();
+        pack.runCsrDevServer();
 
         this.runMock();
     }

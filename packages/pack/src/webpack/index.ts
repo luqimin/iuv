@@ -15,7 +15,7 @@ import Plugins from './plugins';
 import Resolve from './resolve';
 import ResolveLoader from './resolveLoader';
 import getSSRConfig from './ssr.config';
-import getWebpackDevServerConfig from './webpackDevServer.config';
+import getWebpackDevServerConfig from './webpackCsr';
 
 /**
  * 获取webpack配置

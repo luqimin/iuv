@@ -6,9 +6,9 @@ import { isDevDquipment } from '../utils/platform';
 import spin from '../utils/spin';
 
 /**
- * 启动webapckDevServer
+ * Csr项目，启动dev服务， 打包
  */
-export const webpackDevServer = (
+export const webpackCsr = (
     webpackConfig: webpack.Configuration,
     type: 'build' | 'server',
     title?: string,
