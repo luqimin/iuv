@@ -60,7 +60,7 @@ export default class IUVPack {
     public compileCsr(): Promise<webpack.Stats> {
         const webpackConfig: webpack.Configuration = getWebpackDevServerCompilerConfig(this.options, this.config);
         const pathArr = this.options.clientSourcePath?.split('/');
-        const name = Array.isArray(pathArr) ? pathArr[pathArr?.length - 1] : 'clent';
+        const name = Array.isArray(pathArr) ? pathArr[pathArr?.length - 1] : 'client';
         return webpackCsr(webpackConfig, 'build', `client ${name}`) as Promise<any>;
     }
 
