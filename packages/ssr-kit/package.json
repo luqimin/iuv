@@ -1,6 +1,6 @@
 {
   "name": "@iuv/ssr-kit",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Tools set for iuv ssr projects",
   "main": "index.js",
   "scripts": {
@@ -33,7 +33,7 @@
   "license": "ISC",
   "dependencies": {
     "@iuv/core": "^2.0.2",
-    "@iuv/pack": "^2.1.1",
+    "@iuv/pack": "^2.1.2",
     "cross-spawn": "^6.0.5",
     "extend": "^3.0.2",
     "lodash": "^4.17.11",
