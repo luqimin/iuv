@@ -21,7 +21,7 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
                         loader: 'css-loader',
                         options: {
                             modules: {
-                                localIdentName: Env.isProductuction ? '[contenthash:base64:4]' : '[path][name]_[local]',
+                                localIdentName: Env.isProductuction ? '[contenthash:base64:8]' : '[path][name]_[local]',
                             },
                         },
                     },

@@ -12,7 +12,7 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
         },
         production: {
             filename: `[name].${getVersion(config)}.js`,
-            chunkFilename: '[name].[chunkhash:4].js',
+            chunkFilename: '[name].[chunkhash:8].js',
             publicPath: config.publicPath || '/dist/',
         },
         development: {

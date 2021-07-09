@@ -17,7 +17,7 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
                         options: {
                             modules: {
                                 exportOnlyLocals: true,
-                                localIdentName: Env.isProductuction ? '[contenthash:base64:4]' : '[path][name]_[local]',
+                                localIdentName: Env.isProductuction ? '[contenthash:base64:8]' : '[path][name]_[local]',
                             },
                         },
                     },

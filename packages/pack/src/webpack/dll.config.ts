@@ -15,8 +15,8 @@ export default (options: IUVPackOptions, config?: IUVPackConfig): Configuration 
     const cwd = options.context;
     initEnv(cwd);
 
-    let outputFilename = '[name]_[fullhash:4]',
-        libraryName = '[name]_[fullhash:4]';
+    let outputFilename = '[name]_[fullhash:8]',
+        libraryName = '[name]_[fullhash:8]';
     if (config && config.dllOutputSuffix) {
         outputFilename = `[name]${config.dllOutputSuffix}`;
         // 避免dllOutputSuffix包含非法字符

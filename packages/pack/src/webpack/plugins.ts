@@ -48,7 +48,7 @@ export default (options: IUVPackOptions, config: IUVPackConfig) => {
     const production: any[] = [
             new MiniCssExtractPlugin({
                 filename: `[name].${getVersion(config)}.css`,
-                chunkFilename: '[name].[chunkhash:4].css',
+                chunkFilename: '[name].[chunkhash:8].css',
                 ignoreOrder: true,
             }),
         ],
